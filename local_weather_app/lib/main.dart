@@ -88,47 +88,92 @@ class MyApp extends StatelessWidget {
   }
 }
 
+import 'package:flutter/material.dart';
+
 class TodayWeaterWindow extends StatelessWidget {
   const TodayWeaterWindow({super.key});
 
   @override
   Widget build(BuildContext context) {
     return Container(
-      margin: const EdgeInsets.fromLTRB(15, 50, 15, 0),
-      padding: const EdgeInsets.all(20),
-      height: 170,
-      //This for make the decoration for the block
+      margin: const EdgeInsets.fromLTRB(15, 50, 15, 0), // Adds margin outside the container
+      padding: const EdgeInsets.all(20), // Adds padding inside the container
+      height: 170, // Fixed height for the container
       decoration: BoxDecoration(
-          color: const Color.fromARGB(124, 207, 216, 200),
-          borderRadius: BorderRadius.circular(20)),
-      child: const Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
+        // Adds a background color and rounded corners to the container
+        color: const Color.fromARGB(124, 207, 216, 200),
+        borderRadius: BorderRadius.circular(20),
+      ),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start, // Aligns children to the start horizontally
         children: [
-          //this to make the header text in the block
-          Padding(
-            padding: EdgeInsets.fromLTRB(10.0, 0, 0, 0),
+          // Header for the weather section
+          const Padding(
+            padding: EdgeInsets.fromLTRB(10.0, 0, 0, 0), // Adds padding to the left
             child: Row(
               children: [
                 Text(
-                  "The weather for the next 24 hour",
+                  "The weather for the next 24 hours", // Header text
                   style: TextStyle(
-                      fontSize: 18,
-                      // fontWeight: FontWeight.w500,
-                      color: Color.fromARGB(255, 237, 237, 237)),
+                    fontSize: 18,
+                    color: Color.fromARGB(255, 237, 237, 237), // Light gray color
+                  ),
                 )
               ],
             ),
           ),
-          Divider(
-            //this to make line inside the block
+          const Divider(
+            // A horizontal line to separate the header from the content
             color: Colors.white38,
-            thickness: 2.0,
-          )
+            thickness: 1.5,
+          ),
+          // The scrollable weather forecast row
+          Expanded(
+            child: SingleChildScrollView(
+              scrollDirection: Axis.horizontal, // Enables horizontal scrolling
+              child: Row(
+                // Generate multiple weather columns dynamically
+                children: List.generate(
+                  10, // Number of weather columns (10 in this example)
+                  (index) => Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 15.0), // Space between columns
+                    child: Column(
+                      children: [
+                        // Displays the hour dynamically based on the index
+                        Text(
+                          "${5 + index} pm", // Example: "5 pm", "6 pm", etc.
+                          style: const TextStyle(color: Colors.white54), // Light gray text
+                        ),
+                        // Displays an icon for the weather
+                        const Image(
+                          image: AssetImage("Materials/heavy-rain.png"), // Weather icon image
+                          width: 30,
+                          height: 30,
+                        ),
+                        // Displays the temperature
+                        const Text(
+                          "18°", // Example temperature
+                          style: TextStyle(color: Colors.white54), // Light gray text
+                        ),
+                      ],
+                    ),
+                  ),
+                ),
+              ),
+            ),
+          ),
         ],
       ),
     );
   }
-}
+
+
+void main() {
+  runApp(MaterialApp(
+    home: Scaffold(
+      backgroundColor: Colors.black, // Set a dark background for better contrast
+      appBar: AppBar(title: const Text("Weather F
+
 
 class WeekWeatherBlock extends StatelessWidget {
   const WeekWeatherBlock({super.key});
