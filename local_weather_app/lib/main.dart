@@ -53,9 +53,59 @@ class MyApp extends StatelessWidget {
                     size: 35,
                   )),
 
+            ),*/
+                // PreferredSize(
+                //     preferredSize: Size.fromHeight(100.0),
+                //     child: AppBar(
+                //       elevation: 0,
+                //       title:const Text(
+                //         "Amman",
+                //         style: TextStyle(fontSize: 30, color: Colors.white),
+                //       ),
+                //       centerTitle: true,
 
-            
+                //       leading: IconButton(
+                //           onPressed: () => {},
+                //           icon: const Icon(
+                //             Icons.menu,
+                //             color: Colors.white,
+                //             size: 35,
+                //           )),
+                //           backgroundColor:Color.fromARGB(255, 64, 83, 211) ,
+                //       // flexibleSpace: Container(
+                //       //   decoration: const BoxDecoration(
+                //       //       gradient: LinearGradient(
+                //       //     begin: Alignment.bottomCenter,
+                //       //     end: Alignment.topCenter,
+                //       //     colors: [
+                //       //       Color(0xFF3A4ED0), // Start color (blue)
+                //       //       Color(0xFF6C92F2), // End color (lighter blue)
+                //       //     ],
+                //       //   )),
+                //       // ),
+                //     )),
 
+
+
+
+              //update the appbar
+
+                AppBar(
+              elevation: 0,
+              title: const Text(
+                "Amman",
+                style: TextStyle(fontSize: 30, color: Colors.white),
+              ),
+              centerTitle: true,
+              leading: IconButton(
+                  onPressed: () => {},
+                  icon: const Icon(
+                    Icons.menu,
+                    color: Colors.white,
+                    size: 35,
+                  )),
+              backgroundColor: Color.fromARGB(255, 64, 83, 211),
+            ),
 
 
 
@@ -111,12 +161,13 @@ class MyApp extends StatelessWidget {
                 ),
                 child: const Column(
                   children: [
-
-                    //The current weather widget : 
+                    //The current weather widget :
                     CurrentWeatherSection(),
 
 
+
                     Row(
+
                       children: [
                         Padding(padding: EdgeInsets.only(left: 50)),
                         Text(
@@ -126,12 +177,11 @@ class MyApp extends StatelessWidget {
                       ],
                     ),
 
-
-
-
                     //This block is for the today weather (over 24 hour)
+
                     TodayWeaterWindow(),
                     
+
                     //this block is for the weekly weather (7 days)
                     WeekWeatherBlock(),
 
@@ -200,24 +250,61 @@ class WeekWeatherBlock extends StatelessWidget {
       child: const Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Padding(
-            padding: EdgeInsets.fromLTRB(10.0, 0, 0, 0),
-            child: Row(
-              children: [
-                Text(
-                  "The weather for this week",
-                  style: TextStyle(
-                      fontSize: 18,
-                      fontWeight: FontWeight.w500,
-                      color: Color.fromARGB(255, 237, 237, 237)),
-                )
-              ],
-            ),
+          // Padding(
+          //   padding: EdgeInsets.fromLTRB(10.0, 0, 0, 0),
+          //   child: Row(
+          //     children: [
+          //       Text(
+          //         "The weather for this week",
+          //         style: TextStyle(
+          //             fontSize: 18,
+          //             fontWeight: FontWeight.w500,
+          //             color: Color.fromARGB(255, 237, 237, 237)),
+          //       )
+          //     ],
+          //   ),
+          // ),
+
+          // Divider(
+          //   color: Colors.white38,
+          //   thickness: 2.0,
+          // )
+
+          Row(
+            children: [
+              
+            ],
           ),
-          Divider(
-            color: Colors.white38,
-            thickness: 2.0,
-          )
+          Row(
+            children: [
+              
+            ],
+          ),
+          Row(
+            children: [
+              
+            ],
+          ),
+          Row(
+            children: [
+              
+            ],
+          ),
+          Row(
+            children: [
+              
+            ],
+          ),
+          Row(
+            children: [
+              
+            ],
+          ),
+          Row(
+            children: [
+              
+            ],
+          ),
         ],
       ),
     );
@@ -249,15 +336,22 @@ class WindSpeed extends StatelessWidget {
       decoration: BoxDecoration(
           color: const Color.fromARGB(124, 207, 216, 220),
           borderRadius: BorderRadius.circular(20)),
-      child: const Column(
+      child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Padding(
-            padding: EdgeInsets.fromLTRB(5.0, 0, 0, 0),
+            padding: const EdgeInsets.only(left: 5.0),
             child: Row(
               children: [
-                Text(
-                  "Wind speed",
+                Padding(
+                  padding: const EdgeInsets.only(right: 9.0),
+                  child: Container(
+                  child:Image.asset("Materials/windy.png",width: 30,height: 35,color: Colors.white,)
+                  
+                  ),
+                ),
+                const Text(
+                  "Wind",
                   style: TextStyle(
                       fontSize: 18,
                       fontWeight: FontWeight.w500,
@@ -266,7 +360,7 @@ class WindSpeed extends StatelessWidget {
               ],
             ),
           ),
-          Divider(
+          const Divider(
             color: Colors.white38,
             thickness: 2.0,
           )
@@ -289,15 +383,22 @@ class SeaLevel extends StatelessWidget {
       decoration: BoxDecoration(
           color: const Color.fromARGB(124, 207, 216, 220),
           borderRadius: BorderRadius.circular(20)),
-      child: const Column(
+      child:  Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Padding(
             padding: EdgeInsets.fromLTRB(5.0, 0, 0, 0),
             child: Row(
               children: [
-                Text(
-                  "Wind speed",
+                Padding(
+                  padding: const EdgeInsets.only(right: 8.0),
+                  child: Container(
+                    child: Image.asset('Materials/tide.png',width: 30,height: 25,color: Colors.white,),
+                  ),
+                ),
+                
+                const Text(
+                  "sea level",
                   style: TextStyle(
                       fontSize: 18,
                       fontWeight: FontWeight.w500,
@@ -306,7 +407,7 @@ class SeaLevel extends StatelessWidget {
               ],
             ),
           ),
-          Divider(
+          const Divider(
             color: Colors.white38,
             thickness: 2.0,
           )
