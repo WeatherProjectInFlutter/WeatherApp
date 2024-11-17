@@ -6,7 +6,7 @@ void main() {
 
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
-
+//comment for example
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
@@ -22,7 +22,7 @@ class MyApp extends StatelessWidget {
             extendBodyBehindAppBar:
                 true, // Allows the body to extend behind the AppBar, to make body&appbar in the same color without borders
             appBar:
-              //update the appbar
+                //update the appbar
 
                 AppBar(
               elevation: 0,
@@ -40,19 +40,12 @@ class MyApp extends StatelessWidget {
                   )),
               backgroundColor: Color.fromARGB(255, 64, 83, 211),
             ),
-
-
-
-
-
-
-
-                
             body: SingleChildScrollView(
               child: Container(
                 padding: const EdgeInsets.only(
                     top: 170,
-                    bottom:100), // Prevents content from overlapping the AppBar
+                    bottom:
+                        100), // Prevents content from overlapping the AppBar
 
                 //All the code till the end of box decoration is for make the background as a gradient
                 decoration: const BoxDecoration(
@@ -70,10 +63,7 @@ class MyApp extends StatelessWidget {
                     //The current weather widget :
                     CurrentWeatherSection(),
 
-
-
                     Row(
-
                       children: [
                         Padding(padding: EdgeInsets.only(left: 50)),
                         Text(
@@ -86,7 +76,6 @@ class MyApp extends StatelessWidget {
                     //This block is for the today weather (over 24 hour)
 
                     TodayWeaterWindow(),
-                    
 
                     //this block is for the weekly weather (7 days)
                     WeekWeatherBlock(),
@@ -95,12 +84,9 @@ class MyApp extends StatelessWidget {
                   ],
                 ),
               ),
-            )
-            )
-            );
+            )));
   }
 }
-            
 
 class TodayWeaterWindow extends StatelessWidget {
   const TodayWeaterWindow({super.key});
@@ -180,39 +166,25 @@ class WeekWeatherBlock extends StatelessWidget {
           // )
 
           Row(
-            children: [
-              
-            ],
+            children: [],
           ),
           Row(
-            children: [
-              
-            ],
+            children: [],
           ),
           Row(
-            children: [
-              
-            ],
+            children: [],
           ),
           Row(
-            children: [
-              
-            ],
+            children: [],
           ),
           Row(
-            children: [
-              
-            ],
+            children: [],
           ),
           Row(
-            children: [
-              
-            ],
+            children: [],
           ),
           Row(
-            children: [
-              
-            ],
+            children: [],
           ),
         ],
       ),
@@ -255,9 +227,12 @@ class WindSpeed extends StatelessWidget {
                 Padding(
                   padding: const EdgeInsets.only(right: 9.0),
                   child: Container(
-                  child:Image.asset("Materials/windy.png",width: 30,height: 35,color: Colors.white,)
-                  
-                  ),
+                      child: Image.asset(
+                    "Materials/windy.png",
+                    width: 30,
+                    height: 35,
+                    color: Colors.white,
+                  )),
                 ),
                 const Text(
                   "Wind",
@@ -292,7 +267,7 @@ class SeaLevel extends StatelessWidget {
       decoration: BoxDecoration(
           color: const Color.fromARGB(124, 207, 216, 220),
           borderRadius: BorderRadius.circular(20)),
-      child:  Column(
+      child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Padding(
@@ -302,10 +277,14 @@ class SeaLevel extends StatelessWidget {
                 Padding(
                   padding: const EdgeInsets.only(right: 8.0),
                   child: Container(
-                    child: Image.asset('Materials/tide.png',width: 30,height: 25,color: Colors.white,),
+                    child: Image.asset(
+                      'Materials/tide.png',
+                      width: 30,
+                      height: 25,
+                      color: Colors.white,
+                    ),
                   ),
                 ),
-                
                 const Text(
                   "sea level",
                   style: TextStyle(
