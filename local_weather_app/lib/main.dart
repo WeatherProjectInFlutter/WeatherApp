@@ -64,12 +64,13 @@ class MyApp extends StatelessWidget {
 
             ),*/
                 PreferredSize(
-                    preferredSize: Size.fromHeight(60.0),
+                    preferredSize: Size.fromHeight(100.0),
                     child: AppBar(
                       title: Text(
                         "Amman",
                         style: TextStyle(fontSize: 30, color: Colors.white),
                       ),
+                    
                       centerTitle: true,
                       leading: IconButton(
                           onPressed: () => {},
@@ -90,12 +91,12 @@ class MyApp extends StatelessWidget {
                         )),
                       ),
                     )),
+
             body: SingleChildScrollView(
               child: Container(
                 padding: const EdgeInsets.only(
                     top: 170,
-                    bottom:
-                        100), // Prevents content from overlapping the AppBar
+                    bottom:100), // Prevents content from overlapping the AppBar
 
                 //All the code till the end of box decoration is for make the background as a gradient
                 decoration: const BoxDecoration(
@@ -108,14 +109,14 @@ class MyApp extends StatelessWidget {
                     ],
                   ),
                 ),
-                child: Column(
+                child: const Column(
                   children: [
 
                     //The current weather widget : 
                     CurrentWeatherSection(),
 
 
-                    const Row(
+                    Row(
                       children: [
                         Padding(padding: EdgeInsets.only(left: 50)),
                         Text(
@@ -129,12 +130,12 @@ class MyApp extends StatelessWidget {
 
 
                     //This block is for the today weather (over 24 hour)
-                    const TodayWeaterWindow(),
+                    TodayWeaterWindow(),
                     
                     //this block is for the weekly weather (7 days)
-                    const WeekWeatherBlock(),
+                    WeekWeatherBlock(),
 
-                    const WindSpeedAndSeaLevel(),
+                    WindSpeedAndSeaLevel(),
                   ],
                 ),
               ),
@@ -153,7 +154,7 @@ class TodayWeaterWindow extends StatelessWidget {
       height: 170,
       //This for make the decoration for the block
       decoration: BoxDecoration(
-          color: const Color.fromARGB(124, 207, 216, 220),
+          color: const Color.fromARGB(124, 207, 216, 200),
           borderRadius: BorderRadius.circular(20)),
       child: const Column(
         crossAxisAlignment: CrossAxisAlignment.start,
@@ -167,7 +168,7 @@ class TodayWeaterWindow extends StatelessWidget {
                   "The weather for the next 24 hour",
                   style: TextStyle(
                       fontSize: 18,
-                      fontWeight: FontWeight.w500,
+                      // fontWeight: FontWeight.w500,
                       color: Color.fromARGB(255, 237, 237, 237)),
                 )
               ],
@@ -331,7 +332,7 @@ class CurrentWeatherSection extends StatelessWidget {
           ),
         ),
         Container(
-          padding: const EdgeInsets.only(left: 5),
+          //  padding: const EdgeInsets.only(left: 5), //هاي على التلفون بتخرب الصورة
           child: Image.asset("Materials/sunny.png", width: 140, height: 140),
         )
       ],
