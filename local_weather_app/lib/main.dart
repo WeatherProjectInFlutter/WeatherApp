@@ -215,24 +215,61 @@ class WeekWeatherBlock extends StatelessWidget {
       child: const Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Padding(
-            padding: EdgeInsets.fromLTRB(10.0, 0, 0, 0),
-            child: Row(
-              children: [
-                Text(
-                  "The weather for this week",
-                  style: TextStyle(
-                      fontSize: 18,
-                      fontWeight: FontWeight.w500,
-                      color: Color.fromARGB(255, 237, 237, 237)),
-                )
-              ],
-            ),
+          // Padding(
+          //   padding: EdgeInsets.fromLTRB(10.0, 0, 0, 0),
+          //   child: Row(
+          //     children: [
+          //       Text(
+          //         "The weather for this week",
+          //         style: TextStyle(
+          //             fontSize: 18,
+          //             fontWeight: FontWeight.w500,
+          //             color: Color.fromARGB(255, 237, 237, 237)),
+          //       )
+          //     ],
+          //   ),
+          // ),
+
+          // Divider(
+          //   color: Colors.white38,
+          //   thickness: 2.0,
+          // )
+
+          Row(
+            children: [
+              
+            ],
           ),
-          Divider(
-            color: Colors.white38,
-            thickness: 2.0,
-          )
+          Row(
+            children: [
+              
+            ],
+          ),
+          Row(
+            children: [
+              
+            ],
+          ),
+          Row(
+            children: [
+              
+            ],
+          ),
+          Row(
+            children: [
+              
+            ],
+          ),
+          Row(
+            children: [
+              
+            ],
+          ),
+          Row(
+            children: [
+              
+            ],
+          ),
         ],
       ),
     );
@@ -264,15 +301,22 @@ class WindSpeed extends StatelessWidget {
       decoration: BoxDecoration(
           color: const Color.fromARGB(124, 207, 216, 220),
           borderRadius: BorderRadius.circular(20)),
-      child: const Column(
+      child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Padding(
-            padding: EdgeInsets.fromLTRB(5.0, 0, 0, 0),
+            padding: const EdgeInsets.only(left: 5.0),
             child: Row(
               children: [
-                Text(
-                  "Wind speed",
+                Padding(
+                  padding: const EdgeInsets.only(right: 9.0),
+                  child: Container(
+                  child:Image.asset("Materials/windy.png",width: 30,height: 35,color: Colors.white,)
+                  
+                  ),
+                ),
+                const Text(
+                  "Wind",
                   style: TextStyle(
                       fontSize: 18,
                       fontWeight: FontWeight.w500,
@@ -281,7 +325,7 @@ class WindSpeed extends StatelessWidget {
               ],
             ),
           ),
-          Divider(
+          const Divider(
             color: Colors.white38,
             thickness: 2.0,
           )
@@ -304,15 +348,22 @@ class SeaLevel extends StatelessWidget {
       decoration: BoxDecoration(
           color: const Color.fromARGB(124, 207, 216, 220),
           borderRadius: BorderRadius.circular(20)),
-      child: const Column(
+      child:  Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Padding(
             padding: EdgeInsets.fromLTRB(5.0, 0, 0, 0),
             child: Row(
               children: [
-                Text(
-                  "Wind speed",
+                Padding(
+                  padding: const EdgeInsets.only(right: 8.0),
+                  child: Container(
+                    child: Image.asset('Materials/tide.png',width: 30,height: 25,color: Colors.white,),
+                  ),
+                ),
+                
+                const Text(
+                  "sea level",
                   style: TextStyle(
                       fontSize: 18,
                       fontWeight: FontWeight.w500,
@@ -321,7 +372,7 @@ class SeaLevel extends StatelessWidget {
               ],
             ),
           ),
-          Divider(
+          const Divider(
             color: Colors.white38,
             thickness: 2.0,
           )
