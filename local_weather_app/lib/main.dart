@@ -53,43 +53,64 @@ class MyApp extends StatelessWidget {
                     size: 35,
                   )),
 
-
-            
-
-
-
-
-
-
-
             ),*/
-                PreferredSize(
-                    preferredSize: Size.fromHeight(60.0),
-                    child: AppBar(
-                      title: Text(
-                        "Amman",
-                        style: TextStyle(fontSize: 30, color: Colors.white),
-                      ),
-                      centerTitle: true,
-                      leading: IconButton(
-                          onPressed: () => {},
-                          icon: const Icon(
-                            Icons.menu,
-                            color: Colors.white,
-                            size: 35,
-                          )),
-                      flexibleSpace: Container(
-                        decoration: const BoxDecoration(
-                            gradient: LinearGradient(
-                          begin: Alignment.bottomCenter,
-                          end: Alignment.topCenter,
-                          colors: [
-                            Color(0xFF3A4ED0), // Start color (blue)
-                            Color(0xFF6C92F2), // End color (lighter blue)
-                          ],
-                        )),
-                      ),
-                    )),
+                // PreferredSize(
+                //     preferredSize: Size.fromHeight(100.0),
+                //     child: AppBar(
+                //       elevation: 0,
+                //       title:const Text(
+                //         "Amman",
+                //         style: TextStyle(fontSize: 30, color: Colors.white),
+                //       ),
+                //       centerTitle: true,
+
+                //       leading: IconButton(
+                //           onPressed: () => {},
+                //           icon: const Icon(
+                //             Icons.menu,
+                //             color: Colors.white,
+                //             size: 35,
+                //           )),
+                //           backgroundColor:Color.fromARGB(255, 64, 83, 211) ,
+                //       // flexibleSpace: Container(
+                //       //   decoration: const BoxDecoration(
+                //       //       gradient: LinearGradient(
+                //       //     begin: Alignment.bottomCenter,
+                //       //     end: Alignment.topCenter,
+                //       //     colors: [
+                //       //       Color(0xFF3A4ED0), // Start color (blue)
+                //       //       Color(0xFF6C92F2), // End color (lighter blue)
+                //       //     ],
+                //       //   )),
+                //       // ),
+                //     )),
+
+
+
+
+              //update the appbar
+
+                AppBar(
+              elevation: 0,
+              title: const Text(
+                "Amman",
+                style: TextStyle(fontSize: 30, color: Colors.white),
+              ),
+              centerTitle: true,
+              leading: IconButton(
+                  onPressed: () => {},
+                  icon: const Icon(
+                    Icons.menu,
+                    color: Colors.white,
+                    size: 35,
+                  )),
+              backgroundColor: Color.fromARGB(255, 64, 83, 211),
+            ),
+
+
+
+
+
             body: SingleChildScrollView(
               child: Container(
                 padding: const EdgeInsets.only(
@@ -108,12 +129,10 @@ class MyApp extends StatelessWidget {
                     ],
                   ),
                 ),
-                child: Column(
+                child: const Column(
                   children: [
-
-                    //The current weather widget : 
+                    //The current weather widget :
                     CurrentWeatherSection(),
-
 
                     const Row(
                       children: [
@@ -125,12 +144,9 @@ class MyApp extends StatelessWidget {
                       ],
                     ),
 
-
-
-
                     //This block is for the today weather (over 24 hour)
                     const TodayWeaterWindow(),
-                    
+
                     //this block is for the weekly weather (7 days)
                     const WeekWeatherBlock(),
 
