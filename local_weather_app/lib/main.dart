@@ -26,6 +26,7 @@ class MyApp extends StatelessWidget {
 
                 AppBar(
               elevation: 0,
+              
               title: const Text(
                 "Amman",
                 style: TextStyle(fontSize: 30, color: Colors.white),
@@ -38,7 +39,7 @@ class MyApp extends StatelessWidget {
                     color: Colors.white,
                     size: 35,
                   )),
-              backgroundColor: Color.fromARGB(255, 64, 83, 211),
+              backgroundColor: const Color.fromARGB(255, 64, 83, 211),
             ),
             body: SingleChildScrollView(
               child: Container(
@@ -53,6 +54,7 @@ class MyApp extends StatelessWidget {
                     begin: Alignment.topCenter,
                     end: Alignment.bottomCenter,
                     colors: [
+                      
                       Color(0xFF3A4ED0), // Start color (blue)
                       Color(0xFF6C92F2), // End color (lighter blue)
                     ],
@@ -123,7 +125,10 @@ class TodayWeaterWindow extends StatelessWidget {
             //this to make line inside the block
             color: Colors.white38,
             thickness: 2.0,
-          )
+          ),
+        
+        
+        
         ],
       ),
     );
@@ -164,6 +169,9 @@ class WeekWeatherBlock extends StatelessWidget {
           //   color: Colors.white38,
           //   thickness: 2.0,
           // )
+
+
+
 
           Row(
             children: [],
@@ -271,7 +279,7 @@ class SeaLevel extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Padding(
-            padding: EdgeInsets.fromLTRB(5.0, 0, 0, 0),
+            padding: const EdgeInsets.fromLTRB(5.0, 0, 0, 0),
             child: Row(
               children: [
                 Padding(
