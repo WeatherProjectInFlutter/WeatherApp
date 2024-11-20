@@ -27,7 +27,6 @@ class MyApp extends StatelessWidget {
 
                 AppBar(
               elevation: 0,
-              
               title: const Text(
                 "Amman",
                 style: TextStyle(fontSize: 30, color: Colors.white),
@@ -40,7 +39,7 @@ class MyApp extends StatelessWidget {
                     color: Colors.white,
                     size: 35,
                   )),
-              backgroundColor: const Color.fromARGB(255, 64, 83, 211),
+              backgroundColor: Color.fromARGB(255, 64, 83, 211),
             ),
             body: SingleChildScrollView(
               child: Container(
@@ -55,7 +54,6 @@ class MyApp extends StatelessWidget {
                     begin: Alignment.topCenter,
                     end: Alignment.bottomCenter,
                     colors: [
-                      
                       Color(0xFF3A4ED0), // Start color (blue)
                       Color(0xFF6C92F2), // End color (lighter blue)
                     ],
@@ -65,12 +63,21 @@ class MyApp extends StatelessWidget {
                   children: [
                     //The current weather widget :
                     CurrentWeatherSection(),
+                    // CurrentWeatherSection(),
 
-                    
+                    // Row(
+                    //   children: [
+                    //     Padding(padding: EdgeInsets.only(left: 50)),
+                    //     Text(
+                    //       "Mostly Cloudy",
+                    //       style: TextStyle(color: Colors.white, fontSize: 19),
+                    //     )
+                    //   ],
+                    // ),
 
                     //This block is for the today weather (over 24 hour)
 
-                    TodayWeaterWindow(),
+                    TodayWeatherWindow(),
 
                     //this block is for the weekly weather (7 days)
                     WeekWeatherBlock(),
@@ -83,12 +90,12 @@ class MyApp extends StatelessWidget {
   }
 }
 
-// import 'package:flutter/material.dart';
 
-class TodayWeaterWindow extends StatelessWidget {
-  const TodayWeaterWindow({super.key});
 
-  @override
+class TodayWeatherWindow extends StatelessWidget {
+  const TodayWeatherWindow({super.key});
+
+@override
   Widget build(BuildContext context) {
     return Container(
       margin: const EdgeInsets.fromLTRB(15, 50, 15, 0), // Adds margin outside the container
@@ -99,11 +106,11 @@ class TodayWeaterWindow extends StatelessWidget {
         color: const Color.fromARGB(124, 207, 216, 200),
         borderRadius: BorderRadius.circular(20),
       ),
-      child: const Column(
+      child: Column(
         crossAxisAlignment: CrossAxisAlignment.start, // Aligns children to the start horizontally
         children: [
           // Header for the weather section
-          Padding(
+          const Padding(
             padding: EdgeInsets.fromLTRB(10.0, 0, 0, 0), // Adds padding to the left
             child: Row(
               children: [
@@ -117,19 +124,50 @@ class TodayWeaterWindow extends StatelessWidget {
               ],
             ),
           ),
-          Divider(
+          const Divider(
             // A horizontal line to separate the header from the content
             color: Colors.white38,
-            thickness: 2.0,
-          )
+            thickness: 1.5,
+          ),
+
+          // The scrollable weather forecast row
+          Expanded(
+            child: SingleChildScrollView(
+              scrollDirection: Axis.horizontal, // Enables horizontal scrolling
+              child: Row(
+                // Generate multiple weather columns dynamically
+                children: List.generate(10,(index) => Padding(   // Number of weather columns (10 in this example)
+                    padding: const EdgeInsets.symmetric(horizontal: 15.0), // Space between columns
+                    child: Column(
+                      children: [
+                        // Displays the hour dynamically based on the index
+                        Text(
+                          "${5 + index} pm", // Example: "5 pm", "6 pm", etc.
+                          style: const TextStyle(color: Colors.white54), // Light gray text
+                        ),
+                        // Displays an icon for the weather
+                        const Image(
+                          image: AssetImage("Materials/heavy-rain.png"), // Weather icon image
+                          width: 30,
+                          height: 30,
+                        ),
+                        // Displays the temperature
+                        const Text(
+                          "18°", // Example temperature
+                          style: TextStyle(color: Colors.white54), // Light gray text
+                        ),
+                      ],
+                    ),
+                  ),
+                ),
+              ),
+            ),
+          ),
         ],
       ),
     );
   }
-
-
 }
-
 
 class WeekWeatherBlock extends StatelessWidget {
   const WeekWeatherBlock({super.key});
@@ -166,9 +204,6 @@ class WeekWeatherBlock extends StatelessWidget {
           //   thickness: 2.0,
           // )
 
-
-
-
           Row(
             children: [],
           ),
@@ -201,9 +236,9 @@ class WindSpeedAndSeaLevel extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Row(
+    return const Row(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
-      children: [ WindSpeed(), SeaLevel()],
+      children: [WindSpeed(), SeaLevel()],
     );
   }
 }
@@ -259,9 +294,7 @@ class WindSpeed extends StatelessWidget {
 }
 
 class SeaLevel extends StatelessWidget {
-
-   SeaLevel({super.key});
-  final CurrentWeatherSection weatherData=CurrentWeatherSection();
+  const SeaLevel({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -277,7 +310,7 @@ class SeaLevel extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Padding(
-            padding: const EdgeInsets.fromLTRB(5.0, 0, 0, 0),
+            padding: EdgeInsets.fromLTRB(5.0, 0, 0, 0),
             child: Row(
               children: [
                 Padding(
@@ -304,9 +337,7 @@ class SeaLevel extends StatelessWidget {
           const Divider(
             color: Colors.white38,
             thickness: 2.0,
-          ),
-          
-        
+          )
         ],
       ),
     );
@@ -316,7 +347,7 @@ class SeaLevel extends StatelessWidget {
 // class CurrentWeatherSection extends StatefulWidget {
 //   const CurrentWeatherSection({super.key});
 
-//   @override
+  //   @override
 //   State<CurrentWeatherSection> createState() => _CurrentWeatherSectionState();
 // }
 

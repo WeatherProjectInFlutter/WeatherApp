@@ -68,6 +68,10 @@ flutter:
     - Materials/windy.png
     - Materials/tide.png
     - Materials/heavy-rain.png
+    - Materials/cloudy.png
+    - Materials/snowy.png
+    - Materials/thunder.png
+
   #   - images/a_dot_ham.jpeg
 
   # An image asset can refer to one or more resolution-specific "variants", see
