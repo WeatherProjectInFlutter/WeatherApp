@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:local_weather_app/CurrentWeatherUI.dart';
 
 void main() {
   runApp(const MyApp());
@@ -65,15 +66,7 @@ class MyApp extends StatelessWidget {
                     //The current weather widget :
                     CurrentWeatherSection(),
 
-                    Row(
-                      children: [
-                        Padding(padding: EdgeInsets.only(left: 50)),
-                        Text(
-                          "Mostly Cloudy",
-                          style: TextStyle(color: Colors.white, fontSize: 19),
-                        )
-                      ],
-                    ),
+                    
 
                     //This block is for the today weather (over 24 hour)
 
@@ -208,9 +201,9 @@ class WindSpeedAndSeaLevel extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Row(
+    return Row(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
-      children: [WindSpeed(), SeaLevel()],
+      children: [ WindSpeed(), SeaLevel()],
     );
   }
 }
@@ -266,7 +259,9 @@ class WindSpeed extends StatelessWidget {
 }
 
 class SeaLevel extends StatelessWidget {
-  const SeaLevel({super.key});
+
+   SeaLevel({super.key});
+  final CurrentWeatherSection weatherData=CurrentWeatherSection();
 
   @override
   Widget build(BuildContext context) {
@@ -309,33 +304,25 @@ class SeaLevel extends StatelessWidget {
           const Divider(
             color: Colors.white38,
             thickness: 2.0,
-          )
+          ),
+          
+        
         ],
       ),
     );
   }
 }
 
-class CurrentWeatherSection extends StatelessWidget {
-  const CurrentWeatherSection({super.key});
+// class CurrentWeatherSection extends StatefulWidget {
+//   const CurrentWeatherSection({super.key});
 
-  @override
-  Widget build(BuildContext context) {
-    return Row(
-      children: [
-        const Padding(padding: EdgeInsets.only(left: 30)),
-        const Text(
-          "24°",
-          style: TextStyle(
-            color: Colors.white,
-            fontSize: 140,
-          ),
-        ),
-        Container(
-          //  padding: const EdgeInsets.only(left: 5), //هاي على التلفون بتخرب الصورة
-          child: Image.asset("Materials/sunny.png", width: 140, height: 140),
-        )
-      ],
-    );
-  }
-}
+//   @override
+//   State<CurrentWeatherSection> createState() => _CurrentWeatherSectionState();
+// }
+
+// class _CurrentWeatherSectionState extends State<CurrentWeatherSection> {
+//   @override
+//   Widget build(BuildContext context) {
+//     return 
+// }
+// }
