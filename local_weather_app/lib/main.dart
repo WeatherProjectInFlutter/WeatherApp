@@ -90,50 +90,53 @@ class MyApp extends StatelessWidget {
   }
 }
 
+// import 'package:flutter/material.dart';
+
 class TodayWeaterWindow extends StatelessWidget {
   const TodayWeaterWindow({super.key});
 
   @override
   Widget build(BuildContext context) {
     return Container(
-      margin: const EdgeInsets.fromLTRB(15, 50, 15, 0),
-      padding: const EdgeInsets.all(20),
-      height: 170,
-      //This for make the decoration for the block
+      margin: const EdgeInsets.fromLTRB(15, 50, 15, 0), // Adds margin outside the container
+      padding: const EdgeInsets.all(20), // Adds padding inside the container
+      height: 170, // Fixed height for the container
       decoration: BoxDecoration(
-          color: const Color.fromARGB(124, 207, 216, 200),
-          borderRadius: BorderRadius.circular(20)),
+        // Adds a background color and rounded corners to the container
+        color: const Color.fromARGB(124, 207, 216, 200),
+        borderRadius: BorderRadius.circular(20),
+      ),
       child: const Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
+        crossAxisAlignment: CrossAxisAlignment.start, // Aligns children to the start horizontally
         children: [
-          //this to make the header text in the block
+          // Header for the weather section
           Padding(
-            padding: EdgeInsets.fromLTRB(10.0, 0, 0, 0),
+            padding: EdgeInsets.fromLTRB(10.0, 0, 0, 0), // Adds padding to the left
             child: Row(
               children: [
                 Text(
-                  "The weather for the next 24 hour",
+                  "The weather for the next 24 hours", // Header text
                   style: TextStyle(
-                      fontSize: 18,
-                      // fontWeight: FontWeight.w500,
-                      color: Color.fromARGB(255, 237, 237, 237)),
+                    fontSize: 18,
+                    color: Color.fromARGB(255, 237, 237, 237), // Light gray color
+                  ),
                 )
               ],
             ),
           ),
           Divider(
-            //this to make line inside the block
+            // A horizontal line to separate the header from the content
             color: Colors.white38,
             thickness: 2.0,
-          ),
-        
-        
-        
+          )
         ],
       ),
     );
   }
+
+
 }
+
 
 class WeekWeatherBlock extends StatelessWidget {
   const WeekWeatherBlock({super.key});
