@@ -15,7 +15,7 @@ class CurrentWeatherSection extends StatefulWidget {
 
 class _CurrentWeatherSectionState extends State<CurrentWeatherSection> {
   Map<String, dynamic>? _Weatherdata;
-  final WeatherService _weatherServise = WeatherService();
+  final WeatherService _weatherService = WeatherService();
   String city = 'Amman';
   bool _isLoading = false;
   String weatherCondition="Sunny"; //default condition 
@@ -26,7 +26,7 @@ class _CurrentWeatherSectionState extends State<CurrentWeatherSection> {
     });
 
     try {
-      final data = await _weatherServise.featchWeather(city);
+      final data = await _weatherService.featchWeather(city);
       setState(() {
         _Weatherdata = data;
       });
@@ -42,12 +42,18 @@ class _CurrentWeatherSectionState extends State<CurrentWeatherSection> {
   String getWeatherImage(String condition){
     Map<String,String>weatherImages={
       "Sunny":"Materials/sunny.png",
-      "Clouds":"Materials/cloudy.png",
+      "Clear":"Materials/sunny.png",
+      "Clouds":"Materials/heavycloud.png",
       "Rain":"Materials/heavy-rain.png",
+      "Drizzle":"Materials/heavy-rain.png",
       "Snow":"Materials/snowy.png",
       "Thunderstorm":"Materials/thunder.png",
+      "Fog":"Materials/fog.png",
+      "Haze":"Materials/fog.png",
+      "Mist":"Materials/fog.png",
+      "Smoke":"Materials/fog.png",
     };
-    return weatherImages[condition]?? "Materials/cloudy.png"; //Materials/$weatherCondition.png"
+    return weatherImages[condition]?? "Materials/sunny.png"; //Materials/$weatherCondition.png"
   }
 
   //To call the _getWeather(); when the widget reload
@@ -95,6 +101,7 @@ class _CurrentWeatherSectionState extends State<CurrentWeatherSection> {
           ],
         ),
 
+        //Refresh button
         Row(textDirection: TextDirection.rtl, children: [
           // const Size(2, 2),
           Padding(
