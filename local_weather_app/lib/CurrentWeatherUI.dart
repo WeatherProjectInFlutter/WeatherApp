@@ -88,7 +88,7 @@ class _CurrentWeatherSectionState extends State<CurrentWeatherSection> {
           Container(
             padding:
                 const EdgeInsets.only(left: 5), //هاي على التلفون بتخرب الصورة
-            child: Image.asset(getWeatherImage(_Weatherdata?['weather'][0]['main']), width: 140, height: 140),
+            child: Image.asset(getWeatherImage('${_Weatherdata?['weather'][0]['main']}'), width: 140, height: 140),
           ),
         ]),
         Row(
