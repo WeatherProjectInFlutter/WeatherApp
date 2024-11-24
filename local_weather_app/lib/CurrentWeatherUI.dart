@@ -115,8 +115,8 @@ class _CurrentWeatherSectionState extends State<CurrentWeatherSection> {
                 //  backgroundColor: Color.fromARGB(255, 99, 134, 225),
 
                 backgroundColor: const Color.fromARGB(255, 96, 114, 233),
-                child: Icon(Icons.refresh_rounded),
                 foregroundColor: Colors.white,
+                child: Icon(Icons.refresh_rounded),
               ),
             ),
           ),

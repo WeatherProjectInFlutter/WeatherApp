@@ -40,7 +40,7 @@ class MyApp extends StatelessWidget {
                     color: Colors.white,
                     size: 35,
                   )),
-              backgroundColor: Color.fromARGB(255, 64, 83, 211),
+              backgroundColor: const Color.fromARGB(255, 64, 83, 211),
             ),
             body: SingleChildScrollView(
               child: Container(
