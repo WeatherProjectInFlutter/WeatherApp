@@ -69,9 +69,11 @@ flutter:
     - Materials/windy.png
     - Materials/tide.png
     - Materials/heavy-rain.png
-    - Materials/cloudy.png
+    - Materials/heavycloud.png
     - Materials/snowy.png
-    - Materials/thunder.png
+    - Materials/thunder-96.png
+    - Materials/fog.png
+
 
   #   - images/a_dot_ham.jpeg
 

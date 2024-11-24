@@ -100,7 +100,7 @@ class TodayWeatherWindow extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       margin: const EdgeInsets.fromLTRB(15, 50, 15, 0), // Adds margin outside the container
-      padding: const EdgeInsets.all(20), // Adds padding inside the container
+      padding: const EdgeInsets.fromLTRB(20,10,20,10), // Adds padding inside the container
       height: 170, // Fixed height for the container
       decoration: BoxDecoration(
         // Adds a background color and rounded corners to the container
@@ -110,27 +110,6 @@ class TodayWeatherWindow extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start, // Aligns children to the start horizontally
         children: [
-          // Header for the weather section
-          const Padding(
-            padding: EdgeInsets.fromLTRB(10.0, 0, 0, 0), // Adds padding to the left
-            child: Row(
-              children: [
-                Text(
-                  "The weather for the next 24 hours", // Header text
-                  style: TextStyle(
-                    fontSize: 18,
-                    color: Color.fromARGB(255, 237, 237, 237), // Light gray color
-                  ),
-                )
-              ],
-            ),
-          ),
-          const Divider(
-            // A horizontal line to separate the header from the content
-            color: Colors.white38,
-            thickness: 1.5,
-          ),
-
           // The scrollable weather forecast row
           Expanded(
             child: SingleChildScrollView(
@@ -138,7 +117,7 @@ class TodayWeatherWindow extends StatelessWidget {
               child: Row(
                 // Generate multiple weather columns dynamically
                 children: List.generate(10,(index) => Padding(   // Number of weather columns (10 in this example)
-                    padding: const EdgeInsets.symmetric(horizontal: 15.0), // Space between columns
+                    padding: const EdgeInsets.fromLTRB(15,15,15,15), // Space between columns
                     child: Column(
                       children: [
                         // Displays the hour dynamically based on the index
@@ -147,12 +126,14 @@ class TodayWeatherWindow extends StatelessWidget {
                           style: const TextStyle(color: Colors.white54), // Light gray text
                         ),
                         // Displays an icon for the weather
+                        const Padding(padding: EdgeInsets.fromLTRB(0, 10,0,0)), //padding between the elements in the columns
                         const Image(
                           image: AssetImage("Materials/heavy-rain.png"), // Weather icon image
                           width: 30,
                           height: 30,
                         ),
                         // Displays the temperature
+                        const Padding(padding: EdgeInsets.fromLTRB(0, 10,0,0)),
                         const Text(
                           "18°", // Example temperature
                           style: TextStyle(color: Colors.white54), // Light gray text
