@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:local_weather_app/CurrentWeatherUI.dart';
+import 'package:local_weather_app/seaLivelAndWindSpeed.dart';
 
 void main() {
   runApp(const MyApp());
@@ -196,72 +197,97 @@ class WeekWeatherBlock extends StatelessWidget {
   }
 }
 
-class WindSpeedAndSeaLevel extends StatelessWidget {
-  const WindSpeedAndSeaLevel({super.key});
 
-  @override
-  Widget build(BuildContext context) {
-    return Row(
-      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-      children: [ WindSpeed(), SeaLevel()],
-    );
-  }
-}
 
-class WindSpeed extends StatelessWidget {
-  const WindSpeed({super.key});
 
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      width: 160,
-      margin: const EdgeInsets.fromLTRB(15, 50, 15, 0),
-      padding: const EdgeInsets.all(20),
-      height: 130,
-      decoration: BoxDecoration(
-          color: const Color.fromARGB(124, 207, 216, 220),
-          borderRadius: BorderRadius.circular(20)),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          Padding(
-            padding: const EdgeInsets.only(left: 5.0),
-            child: Row(
-              children: [
-                Padding(
-                  padding: const EdgeInsets.only(right: 9.0),
-                  child: Container(
-                      child: Image.asset(
-                    "Materials/windy.png",
-                    width: 30,
-                    height: 35,
-                    color: Colors.white,
-                  )),
-                ),
-                const Text(
-                  "Wind",
-                  style: TextStyle(
-                      fontSize: 18,
-                      fontWeight: FontWeight.w500,
-                      color: Color.fromARGB(255, 237, 237, 237)),
-                )
-              ],
-            ),
-          ),
-          const Divider(
-            color: Colors.white38,
-            thickness: 2.0,
-          )
-        ],
-      ),
-    );
-  }
-}
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// class WindSpeedAndSeaLevel extends StatelessWidget {
+//   const WindSpeedAndSeaLevel({super.key});
+
+//   @override
+//   Widget build(BuildContext context) {
+//     return Row(
+//       mainAxisAlignment: MainAxisAlignment.spaceBetween,
+//       children: [ WindSpeed(), SeaLevel()],
+//     );
+//   }
+// }
+
+// class WindSpeed extends StatelessWidget {
+//   const WindSpeed(weatherServise, {super.key});
+
+//   @override
+//   Widget build(BuildContext context) {
+//     return Container(
+//       width: 160,
+//       margin: const EdgeInsets.fromLTRB(15, 50, 15, 0),
+//       padding: const EdgeInsets.all(20),
+//       height: 130,
+//       decoration: BoxDecoration(
+//           color: const Color.fromARGB(124, 207, 216, 220),
+//           borderRadius: BorderRadius.circular(20)),
+//       child: Column(
+//         crossAxisAlignment: CrossAxisAlignment.start,
+//         children: [
+//           Padding(
+//             padding: const EdgeInsets.only(left: 5.0),
+//             child: Row(
+//               children: [
+//                 Padding(
+//                   padding: const EdgeInsets.only(right: 9.0),
+//                   child: Container(
+//                       child: Image.asset(
+//                     "Materials/windy.png",
+//                     width: 30,
+//                     height: 35,
+//                     color: Colors.white,
+//                   )),
+//                 ),
+//                 const Text(
+//                   "Wind",
+//                   style: TextStyle(
+//                       fontSize: 18,
+//                       fontWeight: FontWeight.w500,
+//                       color: Color.fromARGB(255, 237, 237, 237)),
+//                 )
+//               ],
+//             ),
+//           ),
+//           const Divider(
+//             color: Colors.white38,
+//             thickness: 2.0,
+//           )
+//         ],
+//       ),
+//     );
+//   }
+// }
+/*
 class SeaLevel extends StatelessWidget {
 
-   SeaLevel({super.key});
-  final CurrentWeatherSection weatherData=CurrentWeatherSection();
+   SeaLevel(weatherdata, {super.key});
+  // final CurrentWeatherSection weatherData=CurrentWeatherSection();
 
   @override
   Widget build(BuildContext context) {
@@ -312,6 +338,11 @@ class SeaLevel extends StatelessWidget {
     );
   }
 }
+*/
+
+
+
+
 
 // class CurrentWeatherSection extends StatefulWidget {
 //   const CurrentWeatherSection({super.key});
