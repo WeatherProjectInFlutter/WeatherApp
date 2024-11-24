@@ -101,7 +101,7 @@ class _WindSpeedState extends State<WindSpeed> {
 
 
           Center(
-            child: Text('${_Weatherdata?['wind']['speed'].round()} km/s',
+            child: Text('${_Weatherdata?['wind']['speed'].round()} m/s',
             style: const TextStyle(fontSize: 30,fontWeight: FontWeight.w700,color: Colors.white),
             
             )
