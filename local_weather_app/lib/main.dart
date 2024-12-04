@@ -13,11 +13,13 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      debugShowCheckedModeBanner: false,
         title: 'Weather App',
         theme: ThemeData(
           colorScheme: ColorScheme.fromSeed(
               seedColor: const Color.fromARGB(255, 64, 89, 188)),
           //  primarySwatch: Colors.blue,
+
           useMaterial3: true,
         ),
         home: Scaffold(
@@ -33,14 +35,49 @@ class MyApp extends StatelessWidget {
                 style: TextStyle(fontSize: 30, color: Colors.white),
               ),
               centerTitle: true,
-              leading: IconButton(
-                  onPressed: () => {},
-                  icon: const Icon(
-                    Icons.menu,
-                    color: Colors.white,
-                    size: 35,
-                  )),
+
+              //To change the color and the size for the menu icon :
+              iconTheme: const IconThemeData(
+                color: Colors.white,
+                size: 35,
+              ),
+
               backgroundColor: const Color.fromARGB(255, 64, 83, 211),
+            ),
+
+            //To make the drawer in the menu icon in the appbar
+            drawer: Drawer(
+              backgroundColor: Colors.white,
+              width: 350,
+              //we use the builder becuse the context point to the my app and my app not in the
+              //Navigator so we need to make the context point to the drawer like this
+              child: Builder(
+                builder: (context) => ListView(
+                  children: [
+                    ListTile(
+                      leading: const Icon(Icons.arrow_back_rounded),
+                      iconColor: const Color.fromARGB(255, 98, 154, 200),
+                      onTap: () {
+                        //to back when I click in the back arrow
+                        Navigator.pop(context);
+                      },
+                    ),
+                     Container(
+                      padding:const EdgeInsets.all(8.0),
+                      margin: const EdgeInsets.only(top: 20,bottom: 40),
+                      child: const TextField(
+                        cursorColor: Colors.white,
+                        keyboardType: TextInputType.name,
+                        decoration: InputDecoration(
+                            label: Text('city name'),
+                            border: OutlineInputBorder()),
+                      ),
+                    ),
+                    
+                    
+                  ],
+                ),
+              ),
             ),
             body: SingleChildScrollView(
               child: Container(
@@ -91,16 +128,16 @@ class MyApp extends StatelessWidget {
   }
 }
 
-
-
 class TodayWeatherWindow extends StatelessWidget {
   const TodayWeatherWindow({super.key});
 
-@override
+  @override
   Widget build(BuildContext context) {
     return Container(
-      margin: const EdgeInsets.fromLTRB(15, 50, 15, 0), // Adds margin outside the container
-      padding: const EdgeInsets.fromLTRB(20,10,20,10), // Adds padding inside the container
+      margin: const EdgeInsets.fromLTRB(
+          15, 50, 15, 0), // Adds margin outside the container
+      padding: const EdgeInsets.fromLTRB(
+          20, 10, 20, 10), // Adds padding inside the container
       height: 170, // Fixed height for the container
       decoration: BoxDecoration(
         // Adds a background color and rounded corners to the container
@@ -108,7 +145,8 @@ class TodayWeatherWindow extends StatelessWidget {
         borderRadius: BorderRadius.circular(20),
       ),
       child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start, // Aligns children to the start horizontally
+        crossAxisAlignment: CrossAxisAlignment
+            .start, // Aligns children to the start horizontally
         children: [
           // The scrollable weather forecast row
           Expanded(
@@ -116,27 +154,37 @@ class TodayWeatherWindow extends StatelessWidget {
               scrollDirection: Axis.horizontal, // Enables horizontal scrolling
               child: Row(
                 // Generate multiple weather columns dynamically
-                children: List.generate(10,(index) => Padding(   // Number of weather columns (10 in this example)
-                    padding: const EdgeInsets.fromLTRB(15,15,15,15), // Space between columns
+                children: List.generate(
+                  10,
+                  (index) => Padding(
+                    // Number of weather columns (10 in this example)
+                    padding: const EdgeInsets.fromLTRB(
+                        15, 15, 15, 15), // Space between columns
                     child: Column(
                       children: [
                         // Displays the hour dynamically based on the index
                         Text(
                           "${5 + index} pm", // Example: "5 pm", "6 pm", etc.
-                          style: const TextStyle(color: Colors.white54), // Light gray text
+                          style: const TextStyle(
+                              color: Colors.white54), // Light gray text
                         ),
                         // Displays an icon for the weather
-                        const Padding(padding: EdgeInsets.fromLTRB(0, 10,0,0)), //padding between the elements in the columns
+                        const Padding(
+                            padding: EdgeInsets.fromLTRB(0, 10, 0,
+                                0)), //padding between the elements in the columns
                         const Image(
-                          image: AssetImage("Materials/heavy-rain.png"), // Weather icon image
+                          image: AssetImage(
+                              "Materials/heavy-rain.png"), // Weather icon image
                           width: 30,
                           height: 30,
                         ),
                         // Displays the temperature
-                        const Padding(padding: EdgeInsets.fromLTRB(0, 10,0,0)),
+                        const Padding(
+                            padding: EdgeInsets.fromLTRB(0, 10, 0, 0)),
                         const Text(
                           "18°", // Example temperature
-                          style: TextStyle(color: Colors.white54), // Light gray text
+                          style: TextStyle(
+                              color: Colors.white54), // Light gray text
                         ),
                       ],
                     ),
@@ -157,7 +205,7 @@ class WeekWeatherBlock extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      margin: const EdgeInsets.fromLTRB(15, 50, 15, 0),
+      margin: const EdgeInsets.fromLTRB(15, 20, 15, 0),
       padding: const EdgeInsets.all(20),
       height: 320,
       decoration: BoxDecoration(
@@ -212,31 +260,6 @@ class WeekWeatherBlock extends StatelessWidget {
     );
   }
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 // class WindSpeedAndSeaLevel extends StatelessWidget {
 //   const WindSpeedAndSeaLevel({super.key});
@@ -354,20 +377,17 @@ class SeaLevel extends StatelessWidget {
 }
 */
 
-
-
-
-
 // class CurrentWeatherSection extends StatefulWidget {
 //   const CurrentWeatherSection({super.key});
 
-  //   @override
+//   @override
 //   State<CurrentWeatherSection> createState() => _CurrentWeatherSectionState();
 // }
 
 // class _CurrentWeatherSectionState extends State<CurrentWeatherSection> {
 //   @override
 //   Widget build(BuildContext context) {
-//     return 
+//     return
 // }
 // }
+

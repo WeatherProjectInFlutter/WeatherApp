@@ -1,10 +1,13 @@
 import 'package:flutter/material.dart';
+import 'package:local_weather_app/GetCurrentLocation.dart';
 import 'package:local_weather_app/curent_weather_service.dart';
 import 'dart:convert';
 import 'package:http/http.dart' as http;
 
 
-
+class test{
+  
+}
 
 class CurrentWeatherSection extends StatefulWidget {
   const CurrentWeatherSection({super.key});
@@ -14,27 +17,30 @@ class CurrentWeatherSection extends StatefulWidget {
 }
 
 class _CurrentWeatherSectionState extends State<CurrentWeatherSection> {
-  Map<String, dynamic>? _Weatherdata;
-  final WeatherService _weatherService = WeatherService();
-  String city = 'Amman';
-  bool _isLoading = false;
+  Map<String, dynamic>? Weatherdata;
+  final WeatherService weatherService = WeatherService();
+  String city = '';
+
+  bool isLoading = false;
   String weatherCondition="Sunny"; //default condition 
 
-  void _getWeather() async {
+  void getWeather() async {
     setState(() {
-      _isLoading = true;
+      isLoading = true;
     });
 
     try {
-      final data = await _weatherService.featchWeather(city);
+      //this var to get the lat and lon for the user 
+      final position =await getCurrentLocation();
+      final data = await weatherService.featchWeather(position.latitude,position.longitude);
       setState(() {
-        _Weatherdata = data;
+        Weatherdata = data;
       });
     } catch (e) {
       throw Exception("Error: $e");
     } finally {
       setState(() {
-        _isLoading = false;
+        isLoading = false;
       });
     }
   }
@@ -60,7 +66,7 @@ class _CurrentWeatherSectionState extends State<CurrentWeatherSection> {
   @override
   void initState() { 
     super.initState();
-    _getWeather();
+    getWeather();
   }
 
   int getCurentTemp(double val) {
@@ -73,13 +79,13 @@ class _CurrentWeatherSectionState extends State<CurrentWeatherSection> {
       children: [
         Row(children: [
           const Padding(padding: EdgeInsets.only(left: 25)),
-          _isLoading? const Center(
+          isLoading? const Center(
                   child: CircularProgressIndicator(),
                 )
-              : _Weatherdata == null
+              : Weatherdata == null
                   ? const Text("The data is not avilable")
                   : Text(
-                      '${getCurentTemp(_Weatherdata!['main']['temp'])}°',
+                      '${getCurentTemp(Weatherdata!['main']['temp'])}°',
                       style: const TextStyle(
                         color: Colors.white,
                         fontSize: 140,
@@ -88,14 +94,14 @@ class _CurrentWeatherSectionState extends State<CurrentWeatherSection> {
           Container(
             padding:
                 const EdgeInsets.only(left: 5), //هاي على التلفون بتخرب الصورة
-            child: Image.asset(getWeatherImage('${_Weatherdata?['weather'][0]['main']}'), width: 140, height: 140),
+            child: Image.asset(getWeatherImage('${Weatherdata?['weather'][0]['main']}'), width: 140, height: 140),
           ),
         ]),
         Row(
           children: [
             const Padding(padding: EdgeInsets.only(left: 50)),
             Text(
-              '${_Weatherdata?['weather'][0]['description']}',
+              '${Weatherdata?['weather'][0]['description']}',
               style: const TextStyle(color: Colors.white, fontSize: 23),
             )
           ],
@@ -110,7 +116,7 @@ class _CurrentWeatherSectionState extends State<CurrentWeatherSection> {
               width: 30,
               height: 30,
               child: FloatingActionButton(
-                onPressed: _getWeather,
+                onPressed: getWeather,
                 shape: const CircleBorder(),
                 //  backgroundColor: Color.fromARGB(255, 99, 134, 225),
 
