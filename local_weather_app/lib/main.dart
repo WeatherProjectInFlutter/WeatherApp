@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:local_weather_app/CurrentWeatherUI.dart';
+import 'package:local_weather_app/next24HoursUI.dart';
 import 'package:local_weather_app/seaLivelAndWindSpeed.dart';
 
 void main() {
@@ -78,7 +79,7 @@ class MyApp extends StatelessWidget {
 
                     //This block is for the today weather (over 24 hour)
 
-                    TodayWeatherWindow(),
+                    next24HoursSection(),
 
                     //this block is for the weekly weather (7 days)
                     WeekWeatherBlock(),
@@ -93,63 +94,9 @@ class MyApp extends StatelessWidget {
 
 
 
-class TodayWeatherWindow extends StatelessWidget {
-  const TodayWeatherWindow({super.key});
 
-@override
-  Widget build(BuildContext context) {
-    return Container(
-      margin: const EdgeInsets.fromLTRB(15, 50, 15, 0), // Adds margin outside the container
-      padding: const EdgeInsets.fromLTRB(20,10,20,10), // Adds padding inside the container
-      height: 170, // Fixed height for the container
-      decoration: BoxDecoration(
-        // Adds a background color and rounded corners to the container
-        color: const Color.fromARGB(124, 207, 216, 200),
-        borderRadius: BorderRadius.circular(20),
-      ),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start, // Aligns children to the start horizontally
-        children: [
-          // The scrollable weather forecast row
-          Expanded(
-            child: SingleChildScrollView(
-              scrollDirection: Axis.horizontal, // Enables horizontal scrolling
-              child: Row(
-                // Generate multiple weather columns dynamically
-                children: List.generate(10,(index) => Padding(   // Number of weather columns (10 in this example)
-                    padding: const EdgeInsets.fromLTRB(15,15,15,15), // Space between columns
-                    child: Column(
-                      children: [
-                        // Displays the hour dynamically based on the index
-                        Text(
-                          "${5 + index} pm", // Example: "5 pm", "6 pm", etc.
-                          style: const TextStyle(color: Colors.white54), // Light gray text
-                        ),
-                        // Displays an icon for the weather
-                        const Padding(padding: EdgeInsets.fromLTRB(0, 10,0,0)), //padding between the elements in the columns
-                        const Image(
-                          image: AssetImage("Materials/heavy-rain.png"), // Weather icon image
-                          width: 30,
-                          height: 30,
-                        ),
-                        // Displays the temperature
-                        const Padding(padding: EdgeInsets.fromLTRB(0, 10,0,0)),
-                        const Text(
-                          "18°", // Example temperature
-                          style: TextStyle(color: Colors.white54), // Light gray text
-                        ),
-                      ],
-                    ),
-                  ),
-                ),
-              ),
-            ),
-          ),
-        ],
-      ),
-    );
-  }
-}
+
+
 
 class WeekWeatherBlock extends StatelessWidget {
   const WeekWeatherBlock({super.key});
