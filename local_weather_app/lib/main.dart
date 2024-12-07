@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:local_weather_app/CurrentWeatherUI.dart';
+import 'package:local_weather_app/WeekWeatherUI.dart';
 import 'package:local_weather_app/seaLivelAndWindSpeed.dart';
 
 void main() {
@@ -199,67 +200,67 @@ class TodayWeatherWindow extends StatelessWidget {
   }
 }
 
-class WeekWeatherBlock extends StatelessWidget {
-  const WeekWeatherBlock({super.key});
+// class WeekWeatherBlock extends StatelessWidget {
+//   const WeekWeatherBlock({super.key});
 
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      margin: const EdgeInsets.fromLTRB(15, 20, 15, 0),
-      padding: const EdgeInsets.all(20),
-      height: 320,
-      decoration: BoxDecoration(
-          color: const Color.fromARGB(124, 207, 216, 220),
-          borderRadius: BorderRadius.circular(20)),
-      child: const Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          // Padding(
-          //   padding: EdgeInsets.fromLTRB(10.0, 0, 0, 0),
-          //   child: Row(
-          //     children: [
-          //       Text(
-          //         "The weather for this week",
-          //         style: TextStyle(
-          //             fontSize: 18,
-          //             fontWeight: FontWeight.w500,
-          //             color: Color.fromARGB(255, 237, 237, 237)),
-          //       )
-          //     ],
-          //   ),
-          // ),
+//   @override
+//   Widget build(BuildContext context) {
+//     return Container(
+//       margin: const EdgeInsets.fromLTRB(15, 20, 15, 0),
+//       padding: const EdgeInsets.all(20),
+//       height: 320,
+//       decoration: BoxDecoration(
+//           color: const Color.fromARGB(124, 207, 216, 220),
+//           borderRadius: BorderRadius.circular(20)),
+//       child: const Column(
+//         crossAxisAlignment: CrossAxisAlignment.start,
+//         children: [
+//           // Padding(
+//           //   padding: EdgeInsets.fromLTRB(10.0, 0, 0, 0),
+//           //   child: Row(
+//           //     children: [
+//           //       Text(
+//           //         "The weather for this week",
+//           //         style: TextStyle(
+//           //             fontSize: 18,
+//           //             fontWeight: FontWeight.w500,
+//           //             color: Color.fromARGB(255, 237, 237, 237)),
+//           //       )
+//           //     ],
+//           //   ),
+//           // ),
 
-          // Divider(
-          //   color: Colors.white38,
-          //   thickness: 2.0,
-          // )
+//           // Divider(
+//           //   color: Colors.white38,
+//           //   thickness: 2.0,
+//           // )
 
-          Row(
-            children: [],
-          ),
-          Row(
-            children: [],
-          ),
-          Row(
-            children: [],
-          ),
-          Row(
-            children: [],
-          ),
-          Row(
-            children: [],
-          ),
-          Row(
-            children: [],
-          ),
-          Row(
-            children: [],
-          ),
-        ],
-      ),
-    );
-  }
-}
+//           Row(
+//             children: [],
+//           ),
+//           Row(
+//             children: [],
+//           ),
+//           Row(
+//             children: [],
+//           ),
+//           Row(
+//             children: [],
+//           ),
+//           Row(
+//             children: [],
+//           ),
+//           Row(
+//             children: [],
+//           ),
+//           Row(
+//             children: [],
+//           ),
+//         ],
+//       ),
+//     );
+//   }
+// }
 
 // class WindSpeedAndSeaLevel extends StatelessWidget {
 //   const WindSpeedAndSeaLevel({super.key});
