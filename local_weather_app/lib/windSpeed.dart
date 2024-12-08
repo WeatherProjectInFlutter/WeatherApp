@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:geolocator/geolocator.dart';
 import 'package:local_weather_app/GetCurrentLocation.dart';
 import 'package:local_weather_app/curent_weather_service.dart';
 
@@ -55,11 +54,6 @@ class _WindSpeedState extends State<WindSpeed> {
     _getWeather();
   }
 
-
-
-
-
-
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -104,7 +98,12 @@ class _WindSpeedState extends State<WindSpeed> {
 
 
           Center(
-            child: Text('${_Weatherdata?['wind']['speed'].round()} m/s',
+            child: Text('${
+              
+              //  getWindSpeed
+                _Weatherdata?['wind']['speed'].round()
+                
+              } m/s',
             style: const TextStyle(fontSize: 30,fontWeight: FontWeight.w700,color: Colors.white),
             
             )
