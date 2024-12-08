@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:geolocator/geolocator.dart';
 import 'package:local_weather_app/GetCurrentLocation.dart';
 import 'package:local_weather_app/curent_weather_service.dart';
 
@@ -57,6 +56,9 @@ class _SeaLevelState extends State<SeaLevel> {
     _getWeather();
   }
 
+  
+
+
 
 
 
@@ -112,7 +114,10 @@ class _SeaLevelState extends State<SeaLevel> {
           ),
 
           Center(
-            child: Text('${_Weatherdata?['main']['sea_level'].round()}',
+            child: Text('${
+              // getSeaLevel
+                _Weatherdata?['main']['sea_level'].round()
+              }',
             style: 
             const TextStyle(fontSize: 30
             ,color: Color.fromARGB(255, 231, 230, 230),
