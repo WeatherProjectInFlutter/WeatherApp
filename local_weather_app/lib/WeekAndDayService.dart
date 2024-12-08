@@ -1,12 +1,12 @@
 import 'dart:convert';
 import 'package:http/http.dart' as http;
 
-class WeatherService{
+class WeekAndDayService{
   //The api key :
-  final String ApiKey='575c6cc04b8db3ab5f5914d7cfabcf49';
+  final String ApiKey='99ce906d26ad42f3b00153337240712';
   //The URL we will get the data from  :
   
-  final String ApiURL='https://api.openweathermap.org/data/2.5/weather';
+  final String ApiURL='https://api.weatherapi.com/v1/forecast.json';
 
   //This method will take the city name to get the current weather :
   Future<Map<String,dynamic>> featchWeather(double latitude, double longitude)async{
@@ -16,7 +16,7 @@ class WeatherService{
     
     
     //To generate the requst :
-    final url=Uri.parse('$ApiURL?lat=$latitude&lon=$longitude&units=metric&appid=$ApiKey');
+    final url=Uri.parse('$ApiURL?key=$ApiKey&q=$latitude,$longitude&days=7');
 
     try{
       //To send a requst to get the data from api using the methode GET
