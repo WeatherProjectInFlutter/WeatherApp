@@ -9,14 +9,16 @@ class WeekAndDayService{
   final String ApiURL='https://api.weatherapi.com/v1/forecast.json';
 
   //This method will take the city name to get the current weather :
-  Future<Map<String,dynamic>> featchWeather(double latitude, double longitude)async{
+  // Future<Map<String,dynamic>> featchWeather(double latitude, double longitude)async{
+  Future<Map<String,dynamic>> featchWeather()async{
     //async-->(Asynchronous)  to share that the method is Future 
     //Future : mean that the operation will excude in the futuer (the result need some time)
     
     
     
     //To generate the requst :
-    final url=Uri.parse('$ApiURL?key=$ApiKey&q=$latitude,$longitude&days=7');
+    // final url=Uri.parse('$ApiURL?key=$ApiKey&q=$latitude,$longitude&days=7');
+    final url=Uri.parse('$ApiURL?key=$ApiKey&q=Zarqa&days=7');
 
     try{
       //To send a requst to get the data from api using the methode GET
