@@ -9,14 +9,18 @@ class WeatherService{
   final String ApiURL='https://api.openweathermap.org/data/2.5/weather';
 
   //This method will take the city name to get the current weather :
-  Future<Map<String,dynamic>> featchWeather(double latitude, double longitude)async{
+
+
+  // Future<Map<String,dynamic>> featchWeather(double latitude, double longitude)async{
+  Future<Map<String,dynamic>> featchWeather()async{
     //async-->(Asynchronous)  to share that the method is Future 
     //Future : mean that the operation will excude in the futuer (the result need some time)
     
     
     
     //To generate the requst :
-    final url=Uri.parse('$ApiURL?lat=$latitude&lon=$longitude&units=metric&appid=$ApiKey');
+    // final url=Uri.parse('$ApiURL?lat=$latitude&lon=$longitude&units=metric&appid=$ApiKey');
+    final url=Uri.parse('$ApiURL?q=Zarqa&units=metric&appid=$ApiKey');
 
     try{
       //To send a requst to get the data from api using the methode GET
