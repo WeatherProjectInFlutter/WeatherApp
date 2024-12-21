@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:local_weather_app/GetCurrentLocation.dart';
 import 'package:local_weather_app/curent_weather_service.dart';
 
 class SeaLevel extends StatefulWidget {
@@ -20,7 +21,7 @@ class _SeaLevelState extends State<SeaLevel> {
 
  Map<String, dynamic>? _Weatherdata;
   final WeatherService _weatherServise = WeatherService();
-  String city = 'Amman';
+  String city = '';
   bool _isLoading = false;
 
   Map<String,dynamic>?getWeatherData(){
@@ -33,7 +34,8 @@ class _SeaLevelState extends State<SeaLevel> {
     });
 
     try {
-      final data = await _weatherServise.featchWeather(city);
+      final position =await getCurrentLocation();
+      final data = await _weatherServise.featchWeather(position.latitude,position.longitude);
       setState(() {
         _Weatherdata = data;
       });
@@ -54,6 +56,9 @@ class _SeaLevelState extends State<SeaLevel> {
     _getWeather();
   }
 
+  
+
+
 
 
 
@@ -68,7 +73,7 @@ class _SeaLevelState extends State<SeaLevel> {
   Widget build(BuildContext context) {
     return Container(
       width: 160,
-      margin: const EdgeInsets.fromLTRB(15, 50, 15, 0),
+      margin: const EdgeInsets.fromLTRB(15, 20, 15, 0),
       padding: const EdgeInsets.all(20),
       height: 130,
       decoration: BoxDecoration(
@@ -109,7 +114,10 @@ class _SeaLevelState extends State<SeaLevel> {
           ),
 
           Center(
-            child: Text('${_Weatherdata?['main']['sea_level'].round()}',
+            child: Text('${
+              // getSeaLevel
+                _Weatherdata?['main']['sea_level'].round()
+              }',
             style: 
             const TextStyle(fontSize: 30
             ,color: Color.fromARGB(255, 231, 230, 230),

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:local_weather_app/GetCurrentLocation.dart';
 import 'package:local_weather_app/curent_weather_service.dart';
 
 class WindSpeed extends StatefulWidget {
@@ -18,7 +19,7 @@ class _WindSpeedState extends State<WindSpeed> {
 
  Map<String, dynamic>? _Weatherdata;
   final WeatherService _weatherServise = WeatherService();
-  String city = 'Amman';
+  String city = '';
   bool _isLoading = false;
 
   Map<String,dynamic>?getWeatherData(){
@@ -31,7 +32,8 @@ class _WindSpeedState extends State<WindSpeed> {
     });
 
     try {
-      final data = await _weatherServise.featchWeather(city);
+      final position=await getCurrentLocation();
+      final data = await _weatherServise.featchWeather(position.latitude,position.longitude);
       setState(() {
         _Weatherdata = data;
       });
@@ -52,16 +54,11 @@ class _WindSpeedState extends State<WindSpeed> {
     _getWeather();
   }
 
-
-
-
-
-
   @override
   Widget build(BuildContext context) {
     return Container(
       width: 160,
-      margin: const EdgeInsets.fromLTRB(15, 50, 15, 0),
+      margin: const EdgeInsets.fromLTRB(15, 20, 15, 0),
       padding: const EdgeInsets.all(15),
       height: 130,
       decoration: BoxDecoration(
@@ -101,7 +98,12 @@ class _WindSpeedState extends State<WindSpeed> {
 
 
           Center(
-            child: Text('${_Weatherdata?['wind']['speed'].round()} m/s',
+            child: Text('${
+              
+              //  getWindSpeed
+                _Weatherdata?['wind']['speed'].round()
+                
+              } m/s',
             style: const TextStyle(fontSize: 30,fontWeight: FontWeight.w700,color: Colors.white),
             
             )
