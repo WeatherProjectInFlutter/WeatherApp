@@ -37,18 +37,19 @@ class MyApp extends StatelessWidget {
 
                 AppBar(
               elevation: 0,
-              title: weatherProvider.isLoding
-                  ? const Center(child: CircularProgressIndicator())
-                  : Weatherdata == null
-                      ? const Text(
-                          "Data is not available",
-                          style: TextStyle(fontSize: 20, color: Colors.white),
-                        )
-                      : Text(
-                          "${Weatherdata['location']['name']}",
-                          style: const TextStyle(
-                              fontSize: 30, color: Colors.white),
-                        ),
+              title: const Text("Amman",style:TextStyle(color: Colors.white),),
+              // title: weatherProvider.isLoding
+              //     ? const Center(child: CircularProgressIndicator())
+              //     : Weatherdata == null
+              //         ? const Text(
+              //             "Data is not available",
+              //             style: TextStyle(fontSize: 20, color: Colors.white),
+              //           )
+              //         : Text(
+              //             "${Weatherdata['location']['name']}",
+              //             style: const TextStyle(
+              //                 fontSize: 30, color: Colors.white),
+              //           ),
               centerTitle: true,
 
               //To change the color and the size for the menu icon :
