@@ -62,7 +62,7 @@ class WeekWeatherBlock extends StatelessWidget {
                           child: Text(
                             "${
                             // convertToInt
-                            WeekWeather?['forecast']['forecastday'][0]['day']['mintemp_c'].round()}°",
+                            WeekWeather?['data'][0]['low_temp'].round()}°",
                             style: const TextStyle(
                                 fontWeight: FontWeight.w500,
                                 color: Colors.white,
@@ -72,7 +72,7 @@ class WeekWeatherBlock extends StatelessWidget {
               Container(
                 margin: const EdgeInsets.only(left: 10),
                 child: Text(
-                  "${WeekWeather?['forecast']['forecastday'][0]['day']['maxtemp_c'].round()}°",
+                  "${WeekWeather?['data'][0]['high_temp'].round()}°",
                   style: const TextStyle(
                       fontWeight: FontWeight.w500,
                       color: Colors.white,
@@ -101,13 +101,13 @@ class WeekWeatherBlock extends StatelessWidget {
               ),
               Container(
                 margin: const EdgeInsets.only(left: 40),
-                child: Text(
-                  "${WeekWeather?['forecast']['forecastday'][0]['day']['avghumidity']}%",
-                  style: const TextStyle(
-                      fontWeight: FontWeight.w100,
-                      color: Colors.white,
-                      fontSize: 15),
-                ),
+                // child: Text(
+                //   "${WeekWeather?['forecast']['forecastday'][0]['day']['avghumidity']}%",
+                //   style: const TextStyle(
+                //       fontWeight: FontWeight.w100,
+                //       color: Colors.white,
+                //       fontSize: 15),
+                // ),
               ),
               Container(
                 // margin: EdgeInsets.only(left: 40),
@@ -132,7 +132,7 @@ class WeekWeatherBlock extends StatelessWidget {
                   child: Text(
                     "${
                     // convertToInt
-                    WeekWeather?['forecast']['forecastday'][1]['day']['mintemp_c'].round()}°",
+                    WeekWeather?['data'][1]['low_temp'].round()}°",
                     style: const TextStyle(
                         fontWeight: FontWeight.w500,
                         color: Colors.white,
@@ -142,7 +142,7 @@ class WeekWeatherBlock extends StatelessWidget {
                 Container(
                   margin: const EdgeInsets.only(left: 10),
                   child: Text(
-                    "${WeekWeather?['forecast']['forecastday'][1]['day']['maxtemp_c'].round()}°",
+                    "${WeekWeather?['data'][1]['high_temp'].round()}°",
                     style: const TextStyle(
                         fontWeight: FontWeight.w500,
                         color: Colors.white,
@@ -171,20 +171,20 @@ class WeekWeatherBlock extends StatelessWidget {
                 ),
                 Container(
                   margin: const EdgeInsets.only(left: 40),
-                  child: Text(
-                    "${WeekWeather?['forecast']['forecastday'][1]['day']['avghumidity']}%",
-                    style: const TextStyle(
-                        fontWeight: FontWeight.w100,
-                        color: Colors.white,
-                        fontSize: 15),
-                  ),
+                  // child: Text(
+                  //   "${WeekWeather?['forecast']['forecastday'][1]['day']['avghumidity']}%",
+                  //   style: const TextStyle(
+                  //       fontWeight: FontWeight.w100,
+                  //       color: Colors.white,
+                  //       fontSize: 15),
+                  // ),
                 ),
                 Container(
                   margin: const EdgeInsets.only(left: 40),
                   child: FutureBuilder<String>(
                     future: () async {
                       final date =
-                          WeekWeather?['forecast']['forecastday'][1]['date'];
+                          WeekWeather?['data'][1]['datetime'];
                       print("Date from API: $date");
 
                       return getDayName(date);
@@ -227,7 +227,7 @@ class WeekWeatherBlock extends StatelessWidget {
                   child: Text(
                     "${
                     // convertToInt
-                    WeekWeather?['forecast']['forecastday'][2]['day']['mintemp_c'].round()}°",
+                    WeekWeather?['data'][2]['low_temp'].round()}°",
                     style: const TextStyle(
                         fontWeight: FontWeight.w500,
                         color: Colors.white,
@@ -237,7 +237,7 @@ class WeekWeatherBlock extends StatelessWidget {
                 Container(
                   margin: const EdgeInsets.only(left: 10),
                   child: Text(
-                    "${WeekWeather?['forecast']['forecastday'][2]['day']['maxtemp_c'].round()}°",
+                    "${WeekWeather?['data'][2]['high_temp'].round()}°",
                     style: const TextStyle(
                         fontWeight: FontWeight.w500,
                         color: Colors.white,
@@ -266,20 +266,20 @@ class WeekWeatherBlock extends StatelessWidget {
                 ),
                 Container(
                   margin: const EdgeInsets.only(left: 40),
-                  child: Text(
-                    "${WeekWeather?['forecast']['forecastday'][2]['day']['avghumidity']}%",
-                    style: const TextStyle(
-                        fontWeight: FontWeight.w100,
-                        color: Colors.white,
-                        fontSize: 15),
-                  ),
+                  // child: Text(
+                  //   "${WeekWeather?['forecast']['forecastday'][2]['day']['avghumidity']}%",
+                  //   style: const TextStyle(
+                  //       fontWeight: FontWeight.w100,
+                  //       color: Colors.white,
+                  //       fontSize: 15),
+                  // ),
                 ),
                 Container(
                   margin: const EdgeInsets.only(left: 40),
                   child: FutureBuilder<String>(
                     future: () async {
                       final date =
-                          WeekWeather?['forecast']['forecastday'][2]['date'];
+                          WeekWeather?['data'][2]['datetime'];
                       print("Date from API: $date");
 
                       return getDayName(date);
@@ -322,7 +322,7 @@ class WeekWeatherBlock extends StatelessWidget {
                   child: Text(
                     "${
                     // convertToInt
-                    WeekWeather?['forecast']['forecastday'][3]['day']['mintemp_c'].round()}°",
+                    WeekWeather?['data'][3]['low_temp'].round()}°",
                     style: const TextStyle(
                         fontWeight: FontWeight.w500,
                         color: Colors.white,
@@ -332,7 +332,7 @@ class WeekWeatherBlock extends StatelessWidget {
                 Container(
                   margin: const EdgeInsets.only(left: 10),
                   child: Text(
-                    "${WeekWeather?['forecast']['forecastday'][3]['day']['maxtemp_c'].round()}°",
+                    "${WeekWeather?['data'][3]['high_temp'].round()}°",
                     style: const TextStyle(
                         fontWeight: FontWeight.w500,
                         color: Colors.white,
@@ -361,20 +361,20 @@ class WeekWeatherBlock extends StatelessWidget {
                 ),
                 Container(
                   margin: const EdgeInsets.only(left: 40),
-                  child: Text(
-                    "${WeekWeather?['forecast']['forecastday'][3]['day']['avghumidity']}%",
-                    style: const TextStyle(
-                        fontWeight: FontWeight.w100,
-                        color: Colors.white,
-                        fontSize: 15),
-                  ),
+                  // child: Text(
+                  //   "${WeekWeather?['forecast']['forecastday'][3]['day']['avghumidity']}%",
+                  //   style: const TextStyle(
+                  //       fontWeight: FontWeight.w100,
+                  //       color: Colors.white,
+                  //       fontSize: 15),
+                  // ),
                 ),
                 Container(
                   margin: const EdgeInsets.only(left: 40),
                   child: FutureBuilder<String>(
                     future: () async {
                       final date =
-                          WeekWeather?['forecast']['forecastday'][3]['date'];
+                          WeekWeather?['data'][3]['datetime'];
                       print("Date from API: $date");
 
                       return getDayName(date);
@@ -417,7 +417,7 @@ class WeekWeatherBlock extends StatelessWidget {
                   child: Text(
                     "${
                     // convertToInt
-                    WeekWeather?['forecast']['forecastday'][4]['day']['mintemp_c'].round()}°",
+                    WeekWeather?['data'][4]['low_temp'].round()}°",
                     style: const TextStyle(
                         fontWeight: FontWeight.w500,
                         color: Colors.white,
@@ -427,7 +427,7 @@ class WeekWeatherBlock extends StatelessWidget {
                 Container(
                   margin: const EdgeInsets.only(left: 10),
                   child: Text(
-                    "${WeekWeather?['forecast']['forecastday'][4]['day']['maxtemp_c'].round()}°",
+                    "${WeekWeather?['data'][4]['high_temp'].round()}°",
                     style: const TextStyle(
                         fontWeight: FontWeight.w500,
                         color: Colors.white,
@@ -456,20 +456,20 @@ class WeekWeatherBlock extends StatelessWidget {
                 ),
                 Container(
                   margin: const EdgeInsets.only(left: 40),
-                  child: Text(
-                    "${WeekWeather?['forecast']['forecastday'][4]['day']['avghumidity']}%",
-                    style: const TextStyle(
-                        fontWeight: FontWeight.w100,
-                        color: Colors.white,
-                        fontSize: 15),
-                  ),
+                  // child: Text(
+                  //   "${WeekWeather?['forecast']['forecastday'][4]['day']['avghumidity']}%",
+                  //   style: const TextStyle(
+                  //       fontWeight: FontWeight.w100,
+                  //       color: Colors.white,
+                  //       fontSize: 15),
+                  // ),
                 ),
                 Container(
                   margin: const EdgeInsets.only(left: 40),
                   child: FutureBuilder<String>(
                     future: () async {
                       final date =
-                          WeekWeather?['forecast']['forecastday'][4]['date'];
+                          WeekWeather?['data'][4]['datetime'];
                       print("Date from API: $date");
 
                       return getDayName(date);
@@ -512,7 +512,7 @@ class WeekWeatherBlock extends StatelessWidget {
                   child: Text(
                     "${
                     // convertToInt
-                    WeekWeather?['forecast']['forecastday'][5]['day']['mintemp_c'].round()}°",
+                    WeekWeather?['data'][5]['low_temp'].round()}°",
                     style: const TextStyle(
                         fontWeight: FontWeight.w500,
                         color: Colors.white,
@@ -522,7 +522,7 @@ class WeekWeatherBlock extends StatelessWidget {
                 Container(
                   margin: const EdgeInsets.only(left: 10),
                   child: Text(
-                    "${WeekWeather?['forecast']['forecastday'][5]['day']['maxtemp_c'].round()}°",
+                    "${WeekWeather?['data'][5]['high_temp'].round()}°",
                     style: const TextStyle(
                         fontWeight: FontWeight.w500,
                         color: Colors.white,
@@ -551,20 +551,20 @@ class WeekWeatherBlock extends StatelessWidget {
                 ),
                 Container(
                   margin: const EdgeInsets.only(left: 40),
-                  child: Text(
-                    "${WeekWeather?['forecast']['forecastday'][5]['day']['avghumidity']}%",
-                    style: const TextStyle(
-                        fontWeight: FontWeight.w100,
-                        color: Colors.white,
-                        fontSize: 15),
-                  ),
+                  // child: Text(
+                  //   "${WeekWeather?['forecast']['forecastday'][5]['day']['avghumidity']}%",
+                  //   style: const TextStyle(
+                  //       fontWeight: FontWeight.w100,
+                  //       color: Colors.white,
+                  //       fontSize: 15),
+                  // ),
                 ),
                 Container(
                   margin: const EdgeInsets.only(left: 40),
                   child: FutureBuilder<String>(
                     future: () async {
                       final date =
-                          WeekWeather?['forecast']['forecastday'][5]['date'];
+                          WeekWeather?['data'][5]['datetime'];
                       print("Date from API: $date");
 
                       return getDayName(date);
@@ -607,7 +607,7 @@ class WeekWeatherBlock extends StatelessWidget {
                   child: Text(
                     "${
                     // convertToInt
-                    WeekWeather?['forecast']['forecastday'][6]['day']['mintemp_c'].round()}°",
+                    WeekWeather?['data'][6]['low_temp'].round()}°",
                     style: const TextStyle(
                         fontWeight: FontWeight.w500,
                         color: Colors.white,
@@ -617,7 +617,7 @@ class WeekWeatherBlock extends StatelessWidget {
                 Container(
                   margin: const EdgeInsets.only(left: 10),
                   child: Text(
-                    "${WeekWeather?['forecast']['forecastday'][6]['day']['maxtemp_c'].round()}°",
+                    "${WeekWeather?['data'][6]['high_temp'].round()}°",
                     style: const TextStyle(
                         fontWeight: FontWeight.w500,
                         color: Colors.white,
@@ -646,20 +646,20 @@ class WeekWeatherBlock extends StatelessWidget {
                 ),
                 Container(
                   margin: const EdgeInsets.only(left: 40),
-                  child: Text(
-                    "${WeekWeather?['forecast']['forecastday'][6]['day']['avghumidity']}%",
-                    style: const TextStyle(
-                        fontWeight: FontWeight.w100,
-                        color: Colors.white,
-                        fontSize: 15),
-                  ),
+                  // child: Text(
+                  //   "${WeekWeather?['forecast']['forecastday'][6]['day']['avghumidity']}%",
+                  //   style: const TextStyle(
+                  //       fontWeight: FontWeight.w100,
+                  //       color: Colors.white,
+                  //       fontSize: 15),
+                  // ),
                 ),
                 Container(
                   margin: const EdgeInsets.only(left: 40),
                   child: FutureBuilder<String>(
                     future: () async {
                       final date =
-                          WeekWeather?['forecast']['forecastday'][6]['date'];
+                          WeekWeather?['data'][6]['datetime'];
                       print("Date from API: $date");
 
                       return getDayName(date);
