@@ -41,7 +41,7 @@ class WeekWeatherBlock extends StatelessWidget {
     }
 
     return Container(
-      margin: const EdgeInsets.fromLTRB(15, 20, 15, 0),
+      margin: const EdgeInsets.fromLTRB(15, 15, 15, 0),
       padding: const EdgeInsets.all(20),
       height: 320,
       decoration: BoxDecoration(
@@ -101,13 +101,13 @@ class WeekWeatherBlock extends StatelessWidget {
               ),
               Container(
                 margin: const EdgeInsets.only(left: 40),
-                // child: Text(
-                //   "${WeekWeather?['forecast']['forecastday'][0]['day']['avghumidity']}%",
-                //   style: const TextStyle(
-                //       fontWeight: FontWeight.w100,
-                //       color: Colors.white,
-                //       fontSize: 15),
-                // ),
+                child: Text(
+                  "${WeekWeather?['data'][0]['rh']}%",
+                  style: const TextStyle(
+                      fontWeight: FontWeight.w100,
+                      color: Colors.white,
+                      fontSize: 15),
+                ),
               ),
               Container(
                 // margin: EdgeInsets.only(left: 40),
@@ -171,13 +171,13 @@ class WeekWeatherBlock extends StatelessWidget {
                 ),
                 Container(
                   margin: const EdgeInsets.only(left: 40),
-                  // child: Text(
-                  //   "${WeekWeather?['forecast']['forecastday'][1]['day']['avghumidity']}%",
-                  //   style: const TextStyle(
-                  //       fontWeight: FontWeight.w100,
-                  //       color: Colors.white,
-                  //       fontSize: 15),
-                  // ),
+                  child: Text(
+                    "${WeekWeather?['data'][1]['rh']}%",
+                    style: const TextStyle(
+                        fontWeight: FontWeight.w100,
+                        color: Colors.white,
+                        fontSize: 15),
+                  ),
                 ),
                 Container(
                   margin: const EdgeInsets.only(left: 40),
@@ -266,13 +266,13 @@ class WeekWeatherBlock extends StatelessWidget {
                 ),
                 Container(
                   margin: const EdgeInsets.only(left: 40),
-                  // child: Text(
-                  //   "${WeekWeather?['forecast']['forecastday'][2]['day']['avghumidity']}%",
-                  //   style: const TextStyle(
-                  //       fontWeight: FontWeight.w100,
-                  //       color: Colors.white,
-                  //       fontSize: 15),
-                  // ),
+                  child: Text(
+                    "${WeekWeather?['data'][2]['rh']}%",
+                    style: const TextStyle(
+                        fontWeight: FontWeight.w100,
+                        color: Colors.white,
+                        fontSize: 15),
+                  ),
                 ),
                 Container(
                   margin: const EdgeInsets.only(left: 40),
@@ -361,13 +361,13 @@ class WeekWeatherBlock extends StatelessWidget {
                 ),
                 Container(
                   margin: const EdgeInsets.only(left: 40),
-                  // child: Text(
-                  //   "${WeekWeather?['forecast']['forecastday'][3]['day']['avghumidity']}%",
-                  //   style: const TextStyle(
-                  //       fontWeight: FontWeight.w100,
-                  //       color: Colors.white,
-                  //       fontSize: 15),
-                  // ),
+                  child: Text(
+                    "${WeekWeather?['data'][3]['rh']}%",
+                    style: const TextStyle(
+                        fontWeight: FontWeight.w100,
+                        color: Colors.white,
+                        fontSize: 15),
+                  ),
                 ),
                 Container(
                   margin: const EdgeInsets.only(left: 40),
@@ -456,13 +456,13 @@ class WeekWeatherBlock extends StatelessWidget {
                 ),
                 Container(
                   margin: const EdgeInsets.only(left: 40),
-                  // child: Text(
-                  //   "${WeekWeather?['forecast']['forecastday'][4]['day']['avghumidity']}%",
-                  //   style: const TextStyle(
-                  //       fontWeight: FontWeight.w100,
-                  //       color: Colors.white,
-                  //       fontSize: 15),
-                  // ),
+                  child: Text(
+                    "${WeekWeather?['data'][4]['rh']}%",
+                    style: const TextStyle(
+                        fontWeight: FontWeight.w100,
+                        color: Colors.white,
+                        fontSize: 15),
+                  ),
                 ),
                 Container(
                   margin: const EdgeInsets.only(left: 40),
@@ -551,13 +551,13 @@ class WeekWeatherBlock extends StatelessWidget {
                 ),
                 Container(
                   margin: const EdgeInsets.only(left: 40),
-                  // child: Text(
-                  //   "${WeekWeather?['forecast']['forecastday'][5]['day']['avghumidity']}%",
-                  //   style: const TextStyle(
-                  //       fontWeight: FontWeight.w100,
-                  //       color: Colors.white,
-                  //       fontSize: 15),
-                  // ),
+                  child: Text(
+                    "${WeekWeather?['data'][5]['rh']}%",
+                    style: const TextStyle(
+                        fontWeight: FontWeight.w100,
+                        color: Colors.white,
+                        fontSize: 15),
+                  ),
                 ),
                 Container(
                   margin: const EdgeInsets.only(left: 40),
@@ -646,13 +646,13 @@ class WeekWeatherBlock extends StatelessWidget {
                 ),
                 Container(
                   margin: const EdgeInsets.only(left: 40),
-                  // child: Text(
-                  //   "${WeekWeather?['forecast']['forecastday'][6]['day']['avghumidity']}%",
-                  //   style: const TextStyle(
-                  //       fontWeight: FontWeight.w100,
-                  //       color: Colors.white,
-                  //       fontSize: 15),
-                  // ),
+                  child: Text(
+                    "${WeekWeather?['data'][6]['rh']}%",
+                    style: const TextStyle(
+                        fontWeight: FontWeight.w100,
+                        color: Colors.white,
+                        fontSize: 15),
+                  ),
                 ),
                 Container(
                   margin: const EdgeInsets.only(left: 40),
