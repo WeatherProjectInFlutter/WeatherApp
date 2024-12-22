@@ -130,9 +130,6 @@ class MyApp extends StatelessWidget {
 
                     //This block is for the today weather (over 24 hour)
 
-
-                    next24HoursSection(),
-
                     // TodayWeatherWindow(),
                     Next24hours(),
 
