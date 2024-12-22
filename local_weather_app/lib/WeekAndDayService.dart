@@ -3,7 +3,7 @@ import 'package:http/http.dart' as http;
 
 class WeekAndDayService{
   //The api key :
-  final String ApiKey='3ad48de30b3f411b8385aa4679a0a73c	';
+  final String ApiKey='3ad48de30b3f411b8385aa4679a0a73c';
   //The URL we will get the data from  :
   
   final String ApiURL='https://api.weatherbit.io/v2.0/forecast/daily';

@@ -1,25 +1,47 @@
 import 'dart:convert';
-import 'package:http/http.dart'as http; //for making http requests
+import 'package:http/http.dart' as http;
 
-class weatherService{
-  // final String _baseUrl = "https://api.openweathermap.org/data/2.5/onecall";
-
-
-//lat: The latitude of the location ,lon: The longitude of the location.
-Future<Map<String,dynamic>>fetchHourlyWeather(double lat,double lon)async{
+class Next24HoursService{
+  //The api key :
+  final String ApiKey='19f3912d879d4b06aea110035242112';
+  //The URL we will get the data from  :
   
-  final String apiKey="03065372363de81d3bacfee096b445b6";
-  final String apiURL = "https://api.openweathermap.org/data/2.5/forecast?lat=$lat&lon=$lon&appid=$apiKey&units=metric";
+  final String ApiURL='https://api.weatherapi.com/v1/forecast.json';
+
+  //This method will take the city name to get the current weather :
+  // Future<Map<String,dynamic>> featchWeather(double latitude, double longitude)async{
+  Future<Map<String,dynamic>> featchWeather()async{
+    //async-->(Asynchronous)  to share that the method is Future 
+    //Future : mean that the operation will excude in the futuer (the result need some time)
+    
+    
+    
+    //To generate the requst :
+    // final url=Uri.parse('$ApiURL?key=$ApiKey&q=$latitude,$longitude&days=7');
+    final url=Uri.parse('$ApiURL?key=$ApiKey&q=Amman&days=7');
+
+    try{
+      //To send a requst to get the data from api using the methode GET
+      //and save the response in this var :
+      final response=await http.get(url);
+      //await -->to wait the Future operation 
 
 
-  final response=await http.get(Uri.parse(apiURL)); //make an http get request to the API endpoint
-
-  //chech if the request was successful
-  if(response.statusCode==200){
-    return json.decode(response.body); //parse the JSON body and return it as a map
+      //To handle the response if the response statusCode is 200 (success) the data
+      //will returned as a dart map 
+      if(response.statusCode==200) {
+        
+        return jsonDecode(response.body);
+      } 
+      //if the statusCode is not 200 then the exption will throws
+      
+      else {
+        throw Exception('Faild to get the weather data');
+      }
     }
-    else{
-      throw Exception("Failed to fetch 24-hour weather data. Status code: ${response.statusCode}");
+    catch(e){
+      throw Exception('Error :  $e');
+    }
   }
-}
+
 }

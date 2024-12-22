@@ -14,8 +14,8 @@ class SeaLevel extends StatelessWidget {
     final weatherProvider = Provider.of<WeatherProvider>(context);
     final _Weatherdata = weatherProvider.currentWeather;
     return Container(
-      width: 160,
-      margin: const EdgeInsets.fromLTRB(15, 20, 15, 0),
+      width: 165,
+      margin: const EdgeInsets.fromLTRB(5, 15, 18, 0),
       padding: const EdgeInsets.all(20),
       height: 130,
       decoration: BoxDecoration(
