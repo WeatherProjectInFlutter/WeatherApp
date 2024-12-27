@@ -95,57 +95,58 @@ class MyApp extends StatelessWidget {
                 ),
               ),
             ),
-            //To make a secroll up refreash 
-            body:RefreshIndicator( onRefresh: ()async{
-              await weatherProvider.featchData();
-            },
-            child:SingleChildScrollView(
-              child: Container(
-                padding: const EdgeInsets.only(
-                    top: 170,
-                    bottom:
-                        100), // Prevents content from overlapping the AppBar
+            //To make a secroll up refreash
+            body: RefreshIndicator(
+                onRefresh: () async {
+                  await weatherProvider.featchData();
+                },
+                child: SingleChildScrollView(
+                  child: Container(
+                    padding: const EdgeInsets.only(
+                        top: 170,
+                        bottom:
+                            100), // Prevents content from overlapping the AppBar
 
-                //All the code till the end of box decoration is for make the background as a gradient
-                decoration: const BoxDecoration(
-                  gradient: LinearGradient(
-                    begin: Alignment.topCenter,
-                    end: Alignment.bottomCenter,
-                    colors: [
-                      Color(0xFF3A4ED0), // Start color (blue)
-                      Color(0xFF6C92F2), // End color (lighter blue)
-                    ],
+                    //All the code till the end of box decoration is for make the background as a gradient
+                    decoration: const BoxDecoration(
+                      gradient: LinearGradient(
+                        begin: Alignment.topCenter,
+                        end: Alignment.bottomCenter,
+                        colors: [
+                          Color(0xFF3A4ED0), // Start color (blue)
+                          Color(0xFF6C92F2), // End color (lighter blue)
+                        ],
+                      ),
+                    ),
+                    child: const Column(
+                      children: [
+                        //The current weather widget :
+                        CurrentWeatherSection(),
+                        // CurrentWeatherSection(),
+
+                        // Row(
+                        //   children: [
+                        //     Padding(padding: EdgeInsets.only(left: 50)),
+                        //     Text(
+                        //       "Mostly Cloudy",
+                        //       style: TextStyle(color: Colors.white, fontSize: 19),
+                        //     )
+                        //   ],
+                        // ),
+
+                        //This block is for the today weather (over 24 hour)
+
+                        // TodayWeatherWindow(),
+                        Next24hours(),
+
+                        //this block is for the weekly weather (7 days)
+                        WeekWeatherBlock(),
+
+                        WindSpeedAndSeaLevel(),
+                      ],
+                    ),
                   ),
-                ),
-                child: const Column(
-                  children: [
-                    //The current weather widget :
-                    CurrentWeatherSection(),
-                    // CurrentWeatherSection(),
-
-                    // Row(
-                    //   children: [
-                    //     Padding(padding: EdgeInsets.only(left: 50)),
-                    //     Text(
-                    //       "Mostly Cloudy",
-                    //       style: TextStyle(color: Colors.white, fontSize: 19),
-                    //     )
-                    //   ],
-                    // ),
-
-                    //This block is for the today weather (over 24 hour)
-
-                    // TodayWeatherWindow(),
-                    Next24hours(),
-
-                    //this block is for the weekly weather (7 days)
-                    WeekWeatherBlock(),
-
-                    WindSpeedAndSeaLevel(),
-                  ],
-                ),
-              ),
-            ))));
+                ))));
   }
 }
 
@@ -411,4 +412,3 @@ class SeaLevel extends StatelessWidget {
 //     return
 // }
 // }
-

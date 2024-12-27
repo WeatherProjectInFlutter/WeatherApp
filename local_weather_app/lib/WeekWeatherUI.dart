@@ -13,7 +13,7 @@ class WeekWeatherBlock extends StatelessWidget {
     final weatherProvider=Provider.of<WeatherProvider>(context);
     final WeekWeather=weatherProvider.weeklyWeather;
     if ( WeekWeather == null) {
-      return Center(child: Text('No data available'));
+      return const Center(child: Text('No data available'));
     }
     Future<String> getDayName(String? s) async {
       List<String> weekdays = [
@@ -40,7 +40,9 @@ class WeekWeatherBlock extends StatelessWidget {
       }
     }
 
-    return Container(
+    return
+    weatherProvider.isLoding? Center(child:  CircularProgressIndicator()):
+     Container(
       margin: const EdgeInsets.fromLTRB(15, 15, 15, 0),
       padding: const EdgeInsets.all(20),
       height: 320,
@@ -197,7 +199,7 @@ class WeekWeatherBlock extends StatelessWidget {
                         return const Text("Loading...");
                       } else if (snapshot.hasError) {
                         print("************* Erorr: ${snapshot.error}");
-                        return Text("Error...");
+                        return const Text("Error...");
                       } else if (snapshot.hasData) {
                         print("************ Sucses");
                         return Text(
@@ -292,7 +294,7 @@ class WeekWeatherBlock extends StatelessWidget {
                         return const Text("Loading...");
                       } else if (snapshot.hasError) {
                         print("************* Erorr: ${snapshot.error}");
-                        return Text("Error...");
+                        return const Text("Error...");
                       } else if (snapshot.hasData) {
                         print("************ Sucses");
                         return Text(
@@ -387,7 +389,7 @@ class WeekWeatherBlock extends StatelessWidget {
                         return const Text("Loading...");
                       } else if (snapshot.hasError) {
                         print("************* Erorr: ${snapshot.error}");
-                        return Text("Error...");
+                        return const Text("Error...");
                       } else if (snapshot.hasData) {
                         print("************ Sucses");
                         return Text(
@@ -482,7 +484,7 @@ class WeekWeatherBlock extends StatelessWidget {
                         return const Text("Loading...");
                       } else if (snapshot.hasError) {
                         print("************* Erorr: ${snapshot.error}");
-                        return Text("Error...");
+                        return const Text("Error...");
                       } else if (snapshot.hasData) {
                         print("************ Sucses");
                         return Text(
@@ -577,7 +579,7 @@ class WeekWeatherBlock extends StatelessWidget {
                         return const Text("Loading...");
                       } else if (snapshot.hasError) {
                         print("************* Erorr: ${snapshot.error}");
-                        return Text("Error...");
+                        return const Text("Error...");
                       } else if (snapshot.hasData) {
                         print("************ Sucses");
                         return Text(
@@ -672,7 +674,7 @@ class WeekWeatherBlock extends StatelessWidget {
                         return const Text("Loading...");
                       } else if (snapshot.hasError) {
                         print("************* Erorr: ${snapshot.error}");
-                        return Text("Error...");
+                        return const Text("Error...");
                       } else if (snapshot.hasData) {
                         print("************ Sucses");
                         return Text(
