@@ -38,19 +38,20 @@ class MyApp extends StatelessWidget {
 
                 AppBar(
               elevation: 0,
-              title: const Text("Amman",style:TextStyle(color: Colors.white),),
-              // title: weatherProvider.isLoding
-              //     ? const Center(child: CircularProgressIndicator())
-              //     : Weatherdata == null
-              //         ? const Text(
-              //             "Data is not available",
-              //             style: TextStyle(fontSize: 20, color: Colors.white),
-              //           )
-              //         : Text(
-              //             "${Weatherdata['location']['name']}",
-              //             style: const TextStyle(
-              //                 fontSize: 30, color: Colors.white),
-              //           ),
+              // title: const Text("Amman",style:TextStyle(color: Colors.white),),
+
+              title: weatherProvider.isLoding
+                  ? const Center(child: CircularProgressIndicator())
+                  : Weatherdata == null
+                      ? const Text(
+                          "Data is not available",
+                          style: TextStyle(fontSize: 20, color: Colors.white),
+                        )
+                      : Text(
+                          "${Weatherdata['name']}",
+                          style: const TextStyle(
+                              fontSize: 30, color: Colors.white),
+                        ),
               centerTitle: true,
 
               //To change the color and the size for the menu icon :
@@ -94,7 +95,11 @@ class MyApp extends StatelessWidget {
                 ),
               ),
             ),
-            body: SingleChildScrollView(
+            //To make a secroll up refreash 
+            body:RefreshIndicator( onRefresh: ()async{
+              await weatherProvider.featchData();
+            },
+            child:SingleChildScrollView(
               child: Container(
                 padding: const EdgeInsets.only(
                     top: 170,
@@ -140,7 +145,7 @@ class MyApp extends StatelessWidget {
                   ],
                 ),
               ),
-            )));
+            ))));
   }
 }
 

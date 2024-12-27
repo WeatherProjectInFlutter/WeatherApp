@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:geolocator/geolocator.dart';
+import 'package:local_weather_app/GetCurrentLocation.dart';
 import 'package:local_weather_app/WeekAndDayService.dart';
 import 'package:local_weather_app/curent_weather_service.dart';
 import 'package:local_weather_app/next24HoursService.dart';
@@ -9,6 +11,7 @@ class WeatherProvider with ChangeNotifier{
   final WeatherService weatherService=WeatherService();
   final WeekAndDayService weekAndDayService=WeekAndDayService();
   final Next24HoursService nextHoursService=Next24HoursService();
+  
 
   Map<String,dynamic>?currentWeather; //A map to store data fetched for the current weather.
   Map<String,dynamic>?weeklyWeather;
@@ -18,13 +21,14 @@ class WeatherProvider with ChangeNotifier{
 
   Future<void>featchData() async{ //This method is responsible for fetching weather data.
 
+     Position position=await getCurrentLocation() ;
     isLoding=true;
     notifyListeners();    //Notifies all listeners (widgets) to rebuild based on the updated state.
 
     try {
-      currentWeather=await weatherService.featchWeather();
-      weeklyWeather=await weekAndDayService.featchWeather();
-      hourlyWeather=await nextHoursService.featchWeather();
+      currentWeather=await weatherService.featchWeatherWithLongAndLat(position.latitude,position.longitude);
+      weeklyWeather=await weekAndDayService.featchWeatherWithLongAndLat(position.latitude,position.longitude);
+      hourlyWeather=await nextHoursService.featchWeatherWithLongAndLat(position.latitude,position.longitude);
     } catch (e) {
       print(e);
     }finally{

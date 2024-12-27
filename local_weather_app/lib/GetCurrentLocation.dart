@@ -1,5 +1,5 @@
 
-import 'package:geolocator/geolocator.dart' show Geolocator, LocationPermission, Position;
+import 'package:geolocator/geolocator.dart' show Geolocator, LocationAccuracy, LocationPermission, Position;
 
 Future<Position> getCurrentLocation() async {
   bool serviceEnabled;
@@ -33,6 +33,8 @@ Future<Position> getCurrentLocation() async {
 
   // Get the current location
   return await Geolocator.getCurrentPosition();
+
+ 
 }
 
 
