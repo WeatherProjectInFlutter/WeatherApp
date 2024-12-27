@@ -18,6 +18,7 @@ Future<Position> getCurrentLocation() async {
   //If permission is denied, it requests permission using requestPermission
   if (permission == LocationPermission.denied) {
     permission = await Geolocator.requestPermission();
+    
 
   // If permission is still denied or denied permanently:
   // Returns an error stating that permissions are denied or permanently denied.
