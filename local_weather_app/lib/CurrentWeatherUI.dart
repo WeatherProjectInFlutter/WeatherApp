@@ -1,8 +1,4 @@
 import 'package:flutter/material.dart';
-
-import 'package:local_weather_app/GetCurrentLocation.dart';
-import 'package:local_weather_app/curent_weather_service.dart';
-
 // import 'package:local_weather_app/GetCurrentLocation.dart';
 import 'package:local_weather_app/WeatherProvider.dart';
 // import 'package:local_weather_app/curent_weather_service.dart';
@@ -69,7 +65,6 @@ String getWeatherImage(String condition){
             )
           ],
         ),
-
 
         //Refresh button
         /*

@@ -1,14 +1,9 @@
 import 'package:flutter/material.dart';
-
-import 'package:local_weather_app/GetCurrentLocation.dart';
-import 'package:local_weather_app/WeekAndDayService.dart';
-
 // import 'package:geolocator/geolocator.dart';
 // import 'package:local_weather_app/GetCurrentLocation.dart';
 import 'package:local_weather_app/WeatherProvider.dart';
 // import 'package:local_weather_app/WeekAndDayService.dart';
 import 'package:provider/provider.dart';
-
 
 class WeekWeatherBlock extends StatelessWidget {
   const WeekWeatherBlock({super.key});

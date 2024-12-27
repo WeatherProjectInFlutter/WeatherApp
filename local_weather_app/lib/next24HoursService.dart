@@ -6,9 +6,6 @@ class Next24HoursService{
   final String ApiKey='19f3912d879d4b06aea110035242112';
   //The URL we will get the data from  :
   
-  const String apiKey="03065372363de81d3bacfee096b445b6";
-  final String apiURL = "https://api.openweathermap.org/data/2.5/forecast?lat=$lat&lon=$lon&appid=$apiKey&units=metric";
-
   final String ApiURL='https://api.weatherapi.com/v1/forecast.json';
 
   //This method will take the city name to get the current weather :

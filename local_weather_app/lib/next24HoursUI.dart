@@ -48,13 +48,6 @@ import 'WeatherProvider.dart';
                         ),
                         const Padding(padding: EdgeInsets.fromLTRB(0, 15, 0, 0)),
                         // Displays an icon for the weather
-
-                        const Image(
-                          image: AssetImage("Materials/heavy-rain.png"), // Weather icon image
-                          width: 30,
-                          height: 30,
-                        ),
-
                         
                         //to change the default API night 
                         (hourlyWeather?['forecast']['forecastday'][0]['hour'][index]['condition']['icon']=="//cdn.weatherapi.com/weather/64x64/night/113.png")?
@@ -67,7 +60,6 @@ import 'WeatherProvider.dart';
                                 'https:${hourlyWeather?['forecast']['forecastday'][0]['hour'][index]['condition']['icon']}', // Weather icon
                                 width: 45,
                                 height: 45,),
-
                         const Padding(padding: EdgeInsets.fromLTRB(0, 15, 0, 0)),
 
                         // Displays the temperature
