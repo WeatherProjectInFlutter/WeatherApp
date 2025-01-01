@@ -16,8 +16,17 @@ class WeatherProvider with ChangeNotifier {
   Map<String, dynamic>? weeklyWeather;
   Map<String, dynamic>? hourlyWeather;
 
-  bool isLoding =
-      false; // A boolean flag to indicate whether the data fetching process is in progress
+  bool isLoding =false; // A boolean flag to indicate whether the data fetching process is in progress
+
+  List<String>_cities =[]; //List to store city names
+  List<String> get cities => _cities;
+
+  void addCity(String cityName){ //to add cities to list (Saved Cities in the DRAWER)
+    if(!_cities.contains(cityName)){
+      _cities.add(cityName); // Add city if it's not already in the list
+      notifyListeners();
+    }
+  }
 
   Future<void> featchData() async {
     //This method is responsible for fetching weather data.
@@ -42,4 +51,22 @@ class WeatherProvider with ChangeNotifier {
       notifyListeners();
     }
   }
+
+  Future<void> fetchDataByCityName(String cityName) async{
+    bool isLoding=true;
+    notifyListeners();
+
+    try{
+      currentWeather=await weatherService.featchWeatherByCityName(cityName);
+      weeklyWeather=await weekAndDayService.featchWeatherByCityName(cityName);
+      hourlyWeather=await nextHoursService.featchWeatherByCityName(cityName);
+    }
+    catch(e){
+      print(e);
+    }finally{
+      isLoding=false;
+      notifyListeners();
+    }
+    addCity(cityName); // Add city to the list after fetching data
+}
 }

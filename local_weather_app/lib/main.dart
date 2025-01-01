@@ -37,7 +37,8 @@ class MyApp extends StatelessWidget {
                 //update the appbar
 
                 AppBar(
-              elevation: 0,
+              elevation: 0, //Removes the shadow below the AppBar for a flat design.
+
               // title: const Text("Amman",style:TextStyle(color: Colors.white),),
 
               title: weatherProvider.isLoding
@@ -64,37 +65,76 @@ class MyApp extends StatelessWidget {
             ),
 
             //To make the drawer in the menu icon in the appbar
-            drawer: Drawer(
-              backgroundColor: Colors.white,
-              width: 350,
-              //we use the builder becuse the context point to the my app and my app not in the
-              //Navigator so we need to make the context point to the drawer like this
-              child: Builder(
-                builder: (context) => ListView(
-                  children: [
-                    ListTile(
-                      leading: const Icon(Icons.arrow_back_rounded),
-                      iconColor: const Color.fromARGB(255, 98, 154, 200),
-                      onTap: () {
-                        //to back when I click in the back arrow
-                        Navigator.pop(context);
-                      },
-                    ),
-                    Container(
-                      padding: const EdgeInsets.all(8.0),
-                      margin: const EdgeInsets.only(top: 20, bottom: 40),
-                      child: const TextField(
-                        cursorColor: Colors.white,
-                        keyboardType: TextInputType.name,
-                        decoration: InputDecoration(
-                            label: Text('city name'),
-                            border: OutlineInputBorder()),
-                      ),
-                    ),
-                  ],
+      drawer: Drawer(
+        // backgroundColor: Colors.white,
+        
+        
+        width: 350,
+        child: Builder( // Provides a new context that is specific to the Drawer
+          builder: (context) {
+            final weatherProvider = Provider.of<WeatherProvider>(context, listen: false); //The listen: false ensures the drawer doesn't rebuild when weatherProvider changes.
+            final cityController = TextEditingController(); //A TextEditingController to capture and manage the city name entered in the TextField.
+
+
+
+            return ListView( //A scrollable column that holds multiple widgets in the drawer
+              children: [
+                ListTile( //Represents a single row with content and an action
+                  leading: const Icon(Icons.arrow_back_rounded), // Adds an icon on the left of the ListTile
+                  iconColor: const Color.fromARGB(255, 98, 154, 200),
+                  onTap: () {
+                    Navigator.pop(context);
+                  },
                 ),
-              ),
-            ),
+                Container(
+                  padding: const EdgeInsets.all(8.0),
+                  margin: const EdgeInsets.only(top: 20, bottom: 20),
+                  child: TextField(
+                    controller: cityController, // The cityController binds to the TextField to manage its value.
+                    cursorColor: Colors.black,
+                    keyboardType: TextInputType.name,
+                    decoration: const InputDecoration( //Adds styling to the TextField, including a label (City Name) and a border.
+                      label: Text('City Name'),
+                      border: OutlineInputBorder(),
+                    ),
+                  ),
+                ),
+                ElevatedButton( // A button for submitting the city name.
+                  onPressed: () async { //when press it :
+                    final cityName = cityController.text.trim();
+                    if (cityName.isNotEmpty) {
+                      await weatherProvider.fetchDataByCityName(cityName);
+                      Navigator.pop(context); // Close the drawer
+                    }
+                  },
+                  child: const Text('Search'),
+                ),
+                const Divider(),
+                const Padding(
+                  padding: EdgeInsets.all(8.0),
+                  child: Text(
+                    "Saved Cities",
+                    style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
+                  ),
+                  ),
+                  
+                  //Display saved cities 
+                  ...weatherProvider.cities.map((city)=>ListTile( //The ... (spread operator) is used to include these widgets directly into the parent widget (like a Column or ListView).
+                            // The map function is used to transform each item in the cities list into a new widget.
+                            // The map function takes a callback function as an argument. Here, the callback function is (city) => ListTile(...).
+                            //ListTile(...): Each city is transformed into a ListTile widget, which represents a row in the drawer.
+                    title:Text(city),
+                    onTap: () async{
+                      await weatherProvider.fetchDataByCityName(city);
+                      Navigator.pop(context);
+                    }, 
+                  )) 
+              ],
+            );
+          },
+        ),
+      ),
+
             //To make a secroll up refreash
             body: RefreshIndicator(
                 onRefresh: () async {

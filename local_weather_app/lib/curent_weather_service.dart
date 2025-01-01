@@ -45,6 +45,40 @@ class WeatherService{
     }
   }
 
+  Future<Map<String,dynamic>> featchWeatherByCityName(String cityName)async{
+    //async-->(Asynchronous)  to share that the method is Future 
+    //Future : mean that the operation will excude in the futuer (the result need some time)
+    
+    
+    
+    //To generate the requst :
+    // final url=Uri.parse('$ApiURL?lat=$latitude&lon=$longitude&units=metric&appid=$ApiKey');
+    final url=Uri.parse('$ApiURL?q=$cityName&units=metric&appid=$ApiKey');
+
+    try{
+      //To send a requst to get the data from api using the methode GET
+      //and save the response in this var :
+      final response=await http.get(url);
+      //await -->to wait the Future operation 
+
+
+      //To handle the response if the response statusCode is 200 (success) the data
+      //will returned as a dart map 
+      if(response.statusCode==200) {
+        return jsonDecode(response.body);
+      } 
+      //if the statusCode is not 200 then the exption will throws
+      
+      else {
+        throw Exception('Faild to get the weather data');
+      }
+    }
+    catch(e){
+      throw Exception('Error :  $e');
+    }
+  }
+
+
    Future<Map<String,dynamic>> featchWeatherWithLongAndLat(double latitude, double longitude)async{
     //async-->(Asynchronous)  to share that the method is Future 
     //Future : mean that the operation will excude in the futuer (the result need some time)
