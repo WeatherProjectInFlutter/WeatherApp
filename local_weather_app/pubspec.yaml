@@ -75,6 +75,7 @@ flutter:
     - Materials/fog.png
     - Materials/night-moon.png
     - Materials/cloudy.png
+    - Materials/humidity-icon.png
 
   #   - images/a_dot_ham.jpeg
 
