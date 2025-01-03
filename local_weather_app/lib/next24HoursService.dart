@@ -82,19 +82,14 @@ Future<Map<String,dynamic>> featchWeatherWithLongAndLat(double latitude, double 
     //async-->(Asynchronous)  to share that the method is Future 
     //Future : mean that the operation will excude in the futuer (the result need some time)
     
-    
-    
     //To generate the requst :
     // final url=Uri.parse('$ApiURL?key=$ApiKey&q=$latitude,$longitude&days=7');
     final url=Uri.parse('$ApiURL?key=$ApiKey&q=$latitude,$longitude&days=7');
-
     try{
       //To send a requst to get the data from api using the methode GET
       //and save the response in this var :
       final response=await http.get(url);
       //await -->to wait the Future operation 
-
-
       //To handle the response if the response statusCode is 200 (success) the data
       //will returned as a dart map 
       if(response.statusCode==200) {

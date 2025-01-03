@@ -51,7 +51,6 @@ class WeekWeatherBlock extends StatelessWidget {
       child: weatherProvider.isLoding
           ? const Center(child: CircularProgressIndicator())
           : Column(
-              // mainAxisAlignment: MainAxisAlignment.spaceEvenly, // Space out items in the Column
               crossAxisAlignment: CrossAxisAlignment.start,
               children: List.generate(7, (index) {
                 // Generate rows dynamically for 7 days
