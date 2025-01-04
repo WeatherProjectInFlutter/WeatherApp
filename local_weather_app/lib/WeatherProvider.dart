@@ -11,14 +11,13 @@ class WeatherProvider with ChangeNotifier {
   final WeekAndDayService weekAndDayService = WeekAndDayService();
   final Next24HoursService nextHoursService = Next24HoursService();
 
-  Map<String, dynamic>?
-      currentWeather; //A map to store data fetched for the current weather.
+  Map<String, dynamic>? currentWeather; //A map to store data fetched for the current weather.
   Map<String, dynamic>? weeklyWeather;
   Map<String, dynamic>? hourlyWeather;
 
   bool isLoding =false; // A boolean flag to indicate whether the data fetching process is in progress
 
-  List<String>_cities =[]; //List to store city names
+  final List<String>_cities =[]; //List to store city names
   List<String> get cities => _cities;
 
   void addCity(String cityName){ //to add cities to list (Saved Cities in the DRAWER)
@@ -60,13 +59,15 @@ class WeatherProvider with ChangeNotifier {
       currentWeather=await weatherService.featchWeatherByCityName(cityName);
       weeklyWeather=await weekAndDayService.featchWeatherByCityName(cityName);
       hourlyWeather=await nextHoursService.featchWeatherByCityName(cityName);
+      
+      addCity(cityName); // Add city to the list after fetching data
     }
     catch(e){
-      print(e);
+      debugPrint("Error fetching weather: $e");
     }finally{
       isLoding=false;
       notifyListeners();
     }
-    addCity(cityName); // Add city to the list after fetching data
+    
 }
 }

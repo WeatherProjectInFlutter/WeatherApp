@@ -1,0 +1,48 @@
+    **this the code before the edit 
+
+
+ (hourlyWeather?['forecast']['forecastday'][0]['hour'][index]['condition']['icon']=="//cdn.weatherapi.com/weather/64x64/night/113.png")?
+                        Image.asset("Materials/night-moon.png",width: 45,height: 45,):
+
+                        (hourlyWeather?['forecast']['forecastday'][0]['hour'][index]['condition']['icon']=="//cdn.weatherapi.com/weather/64x64/night/116.png")?
+                        Image.asset("Materials/heavycloud.png",width: 45,height: 45,):
+      
+                        Image.network(
+                                'https:${hourlyWeather?['forecast']['forecastday'][0]['hour'][index]['condition']['icon']}', // Weather icon
+                                width: 45,
+                                height: 45,),
+                        const Padding(padding: EdgeInsets.fromLTRB(0, 15, 0, 0)),
+                        ),
+
+
+//**********************************************
+
+			this is the code after the edit:
+
+            
+ (hourlyWeather?['forecast']['forecastday'][0]['hour'][index]['condition']['icon'] ==
+                                "//cdn.weatherapi.com/weather/64x64/night/113.png")
+                            ? Image.asset(
+                                "Materials/night-moon.png",
+                                width: 45,
+                                height: 45,
+                              )
+                            : (hourlyWeather?['forecast']['forecastday'][0]['hour'][index]['condition']['icon'] ==
+                                    "//cdn.weatherapi.com/weather/64x64/night/116.png")
+                                ? Image.asset(
+                                    "Materials/heavycloud.png",
+                                    width: 45,
+                                    height: 45,
+                                  )
+                                : Image.network(
+                                    'https:${hourlyWeather?['forecast']['forecastday'][0]['hour'][index]['condition']['icon']}',
+                                    width: 45,
+                                    height: 45,
+                                    errorBuilder: (context, error, stackTrace) {
+                                      return Image.asset(
+                                        'Materials/sunny.png',
+                                        width: 45,
+                                        height: 45,
+                                      );
+                                    },
+                                  ),         

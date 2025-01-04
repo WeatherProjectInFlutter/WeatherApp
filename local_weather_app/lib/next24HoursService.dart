@@ -53,7 +53,7 @@ class Next24HoursService{
     //To generate the requst :
     // final url=Uri.parse('$ApiURL?key=$ApiKey&q=$latitude,$longitude&days=7');
     final url=Uri.parse('$ApiURL?key=$ApiKey&q=$cityName&days=7');
-
+    // print('Generated URL: $url');
     try{
       //To send a requst to get the data from api using the methode GET
       //and save the response in this var :
@@ -64,13 +64,14 @@ class Next24HoursService{
       //To handle the response if the response statusCode is 200 (success) the data
       //will returned as a dart map 
       if(response.statusCode==200) {
-        
+        // print("********************************************//////////85");
         return jsonDecode(response.body);
+
       } 
       //if the statusCode is not 200 then the exption will throws
       
       else {
-        throw Exception('Faild to get the weather data');
+        throw Exception('Faild to get the hourly weather data for city: $cityName');
       }
     }
     catch(e){
@@ -93,7 +94,6 @@ Future<Map<String,dynamic>> featchWeatherWithLongAndLat(double latitude, double 
       //To handle the response if the response statusCode is 200 (success) the data
       //will returned as a dart map 
       if(response.statusCode==200) {
-        
         return jsonDecode(response.body);
       } 
       //if the statusCode is not 200 then the exption will throws
