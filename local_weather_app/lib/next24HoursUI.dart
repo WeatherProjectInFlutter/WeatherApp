@@ -49,18 +49,35 @@ import 'WeatherProvider.dart';
                         const Padding(padding: EdgeInsets.fromLTRB(0, 15, 0, 0)),
                         // Displays an icon for the weather
                         
-                        //to change the default API night 
-                        (hourlyWeather?['forecast']['forecastday'][0]['hour'][index]['condition']['icon']=="//cdn.weatherapi.com/weather/64x64/night/113.png")?
-                        Image.asset("Materials/night-moon.png",width: 45,height: 45,):
-
-                        (hourlyWeather?['forecast']['forecastday'][0]['hour'][index]['condition']['icon']=="//cdn.weatherapi.com/weather/64x64/night/116.png")?
-                        Image.asset("Materials/heavycloud.png",width: 45,height: 45,):
-      
-                        Image.network(
-                                'https:${hourlyWeather?['forecast']['forecastday'][0]['hour'][index]['condition']['icon']}', // Weather icon
+                          // Displays an icon for the weather with fallback logic*****************************************************
+                        (hourlyWeather?['forecast']['forecastday'][0]['hour'][index]['condition']['icon'] ==
+                                "//cdn.weatherapi.com/weather/64x64/night/113.png")
+                            ? Image.asset(
+                                "Materials/night-moon.png",
                                 width: 45,
-                                height: 45,),
-                        const Padding(padding: EdgeInsets.fromLTRB(0, 15, 0, 0)),
+                                height: 45,
+                              )
+                            : (hourlyWeather?['forecast']['forecastday'][0]['hour'][index]['condition']['icon'] ==
+                                    "//cdn.weatherapi.com/weather/64x64/night/116.png")
+                                ? Image.asset(
+                                    "Materials/heavycloud.png",
+                                    width: 45,
+                                    height: 45,
+                                  )
+                                : Image.network(
+                                    'https:${hourlyWeather?['forecast']['forecastday'][0]['hour'][index]['condition']['icon']}',
+                                    width: 45,
+                                    height: 45,
+                                    errorBuilder: (context, error, stackTrace) {
+                                      return Image.asset(
+                                        'Materials/sunny.png',
+                                        width: 45,
+                                        height: 45,
+                                      );
+                                    },
+                                  ),         
+                                  //***********************************************************************************************
+                                const Padding(padding: EdgeInsets.fromLTRB(0, 15, 0, 0)),
 
                         // Displays the temperature
                           Text(

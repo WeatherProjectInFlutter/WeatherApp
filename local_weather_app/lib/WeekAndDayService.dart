@@ -52,7 +52,7 @@ class WeekAndDayService{
     
     //To generate the requst :
     // final url=Uri.parse('$ApiURL?key=$ApiKey&q=$latitude,$longitude&days=7');
-    final url=Uri.parse('$ApiURL?$cityName,JO&key=$ApiKey');
+    final url=Uri.parse('$ApiURL?city=$cityName&key=$ApiKey');
 
     try{
       //To send a requst to get the data from api using the methode GET
@@ -65,12 +65,13 @@ class WeekAndDayService{
       //will returned as a dart map 
       if(response.statusCode==200) {
         
+        // while(response.statusCode!=200);
         return jsonDecode(response.body);
       } 
       //if the statusCode is not 200 then the exption will throws
       
       else {
-        throw Exception('Faild to get the weather data');
+        throw Exception('Faild to get the weekly weather data for city: $cityName');
       }
     }
     catch(e){
@@ -99,7 +100,6 @@ class WeekAndDayService{
       //To handle the response if the response statusCode is 200 (success) the data
       //will returned as a dart map 
       if(response.statusCode==200) {
-        
         return jsonDecode(response.body);
       } 
       //if the statusCode is not 200 then the exption will throws

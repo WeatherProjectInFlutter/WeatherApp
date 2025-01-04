@@ -70,7 +70,7 @@ class WeatherService{
       //if the statusCode is not 200 then the exption will throws
       
       else {
-        throw Exception('Faild to get the weather data');
+        throw Exception('Faild to get the current weather data for city: $cityName');
       }
     }
     catch(e){
