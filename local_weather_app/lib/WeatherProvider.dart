@@ -51,19 +51,24 @@ class WeatherProvider with ChangeNotifier {
     }
   }
 
-  Future<void> fetchDataByCityName(String cityName) async{
+  Future<bool> fetchDataByCityName(String cityName) async{
     bool isLoding=true;
     notifyListeners();
 
     try{
+      if(_cities.isEmpty) {
+        addCity(currentWeather?["name"]);
+      }
       currentWeather=await weatherService.featchWeatherByCityName(cityName);
       weeklyWeather=await weekAndDayService.featchWeatherByCityName(cityName);
       hourlyWeather=await nextHoursService.featchWeatherByCityName(cityName);
       
-      addCity(cityName); // Add city to the list after fetching data
+      addCity(cityName);
+      return true; // Add city to the list after fetching data
     }
     catch(e){
       debugPrint("Error fetching weather: $e");
+      return false;
     }finally{
       isLoding=false;
       notifyListeners();

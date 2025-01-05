@@ -5,6 +5,8 @@ import 'package:local_weather_app/WeekWeatherUI.dart';
 import 'package:local_weather_app/next24HoursUI.dart';
 import 'package:local_weather_app/seaLivelAndWindSpeed.dart';
 import 'package:provider/provider.dart';
+import 'package:awesome_dialog/awesome_dialog.dart';
+
 
 void main() {
   runApp(
@@ -100,22 +102,66 @@ class MyApp extends StatelessWidget {
                     ),
                   ),
                 ),
-                ElevatedButton( // A button for submitting the city name.
-                  onPressed: () async { //when press it :
-                    final cityName = cityController.text.trim();
-                    if (cityName.isNotEmpty) {
-                      await weatherProvider.fetchDataByCityName(cityName);
-                      Navigator.pop(context); // Close the drawer
-                    }
-                  },
-                  child: const Text('Search'),
+                Padding(
+                  padding: const EdgeInsets.fromLTRB(8,5,8,20),
+                  child: ElevatedButton( // A button for submitting the city name.
+                    onPressed: () async { //when press it :
+                      final cityName = cityController.text.trim();
+                      if (cityName.isNotEmpty) {
+                        final IsCityFound=await weatherProvider.fetchDataByCityName(cityName);
+                        if(IsCityFound)
+                        {
+                        Navigator.pop(context);
+                        }
+                        else{
+                        //this when the user enter invalidci city the daialog error will appear
+
+                          AwesomeDialog(
+                            context: context,
+                            animType: AnimType.scale,
+                            dialogType: DialogType.error,
+                            body: const Center(child: Text(
+                                    'There is no city with this name',
+                                    style: TextStyle(fontStyle: FontStyle.italic),
+                                  ),),
+                            title: 'This is Ignored',
+                            desc:   'This is also Ignored',
+                            btnOkOnPress: () {},
+                          ).show();
+
+                        } // Close the drawer
+                      }
+                      else{
+                        //this when the user enter null(no input )the daialog error will appear
+                        AwesomeDialog(
+                            context: context,
+                            animType: AnimType.scale,
+                            dialogType: DialogType.error,
+                            body: const Center(child: Text(
+                                    'There is no city enter',
+                                    style: TextStyle(fontStyle: FontStyle.italic),
+                                  ),),
+                            title: 'This is Ignored',
+                            desc:   'This is also Ignored',
+                            btnOkOnPress: () {},
+                          ).show();
+                      }
+                    },
+                    style: ElevatedButton.styleFrom(
+                      fixedSize:const Size(20, 50),
+                      backgroundColor: const Color.fromARGB(255, 153, 189, 243),
+                      
+                    ),
+                    child: const Text('Search',style: TextStyle(color:Colors.white,fontSize: 18),),
+                    
+                  ),
                 ),
                 const Divider(),
                 const Padding(
                   padding: EdgeInsets.all(8.0),
                   child: Text(
                     "Saved Cities",
-                    style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
+                    style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
                   ),
                   ),
                   

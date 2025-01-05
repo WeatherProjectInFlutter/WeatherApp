@@ -58,105 +58,119 @@ class WeekWeatherBlock extends StatelessWidget {
                   padding: EdgeInsets.only(
                       top: index == 0 ? 0 : 20), // Space between rows
                   child: Row(
-                    children: [
-                      // Low temperature
-                      Container(
-                        child: Text(
-                          "${WeekWeather?['data'][index]['low_temp'].round()}°",
-                          style: const TextStyle(
+                      children: [
+                        // Low temperature
+                        SizedBox(
+                          width: 40, // Fixed width
+                          child: Text(
+                            "${WeekWeather?['data'][index]['low_temp'].round()}°",
+                            style: const TextStyle(
                               fontWeight: FontWeight.w500,
                               color: Colors.white,
-                              fontSize: 15),
+                              fontSize: 15,
+                            ),
+                            textAlign: TextAlign.center,
+                          ),
                         ),
-                      ),
-                      // High temperature
-                      Container(
-                        margin: const EdgeInsets.only(left: 10),
-                        child: Text(
-                          "${WeekWeather?['data'][index]['high_temp'].round()}°",
-                          style: const TextStyle(
+                        // High temperature
+                        SizedBox(
+                          width: 40, // Fixed width
+                          child: Text(
+                            "${WeekWeather?['data'][index]['high_temp'].round()}°",
+                            style: const TextStyle(
                               fontWeight: FontWeight.w500,
                               color: Colors.white,
-                              fontSize: 15),
-                        ),
-                      ),
-                      // Icon 1
-                      Container(
-                        margin: const EdgeInsets.only(left: 25),
-                        child: Image.asset(
-                          'Materials/night-moon.png',
-                          width: 20,
-                          height: 20,
-                        ),
-                      ),
-                      // Icon 2
-                      Container(
-                        margin: const EdgeInsets.only(left: 10),
-                        child: Image.asset(
-                          'Materials/sunny.png',
-                          width: 20,
-                          height: 20,
-                        ),
-                      ),
-                      // Humidity
-                      Container(
-                        margin: const EdgeInsets.only(left: 40),
-                        child: Row(
-                          children: [
-                            Image.asset(
-                              'Materials/humidity-icon.png', // Replace with your humidity icon
-                              width: 15,
-                              height: 15,
+                              fontSize: 15,
                             ),
-                            const SizedBox(
-                                width: 5), // Spacing between icon and text
-                            Text(
-                              "${WeekWeather?['data'][index]['rh']}%", // Humidity value
-                              style: const TextStyle(
-                                  fontWeight: FontWeight.w100,
-                                  color: Colors.white,
-                                  fontSize: 15),
-                            ),
-                          ],
+                            textAlign: TextAlign.start,
+                          ),
                         ),
-                      ),
-                      // Day name
-                      Container(
-                        margin: const EdgeInsets.only(left: 40),
-                        child: FutureBuilder<String>(
-                          future: () async {
-                            final date =
-                                WeekWeather?['data'][index]['datetime'];
-                            return getDayName(date);
-                          }(),
-                          builder: (context, snapshot) {
-                            if (snapshot.connectionState ==
-                                ConnectionState.waiting) {
-                              return const Text("Loading...");
-                            } else if (snapshot.hasError) {
-                              return const Text("Error...");
-                            } else if (snapshot.hasData) {
-                              return Text(
-                                snapshot.data!,
+                        // Icon 1
+                        SizedBox(
+                          width: 30, // Fixed width
+                          child: Image.asset(
+                            'Materials/night-moon.png',
+                            width: 20,
+                            height: 20,
+                          ),
+                        ),
+                        // Icon 2
+                        SizedBox(
+                          width: 30, // Fixed width
+                          child: Image.asset(
+                            'Materials/sunny.png',
+                            width: 20,
+                            height: 20,
+                          ),
+                        ),
+                        // Humidity
+                        SizedBox(
+                          
+                          width: 70, // Fixed width
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              
+                              Image.asset(
+                                'Materials/humidity-icon.png',
+                                width: 15,
+                                height: 15,
+                              ),
+                              const SizedBox(width: 5),
+                              Text(
+                                "${WeekWeather?['data'][index]['rh']}%",
                                 style: const TextStyle(
-                                  fontWeight: FontWeight.w400,
+                                  fontWeight: FontWeight.w100,
                                   color: Colors.white,
                                   fontSize: 15,
                                 ),
-                                textAlign: TextAlign.end,
-                              );
-                            } else {
-                              return const Text("wait...");
-                            }
-                          },
+                              ),
+                            ],
+                          ),
                         ),
-                      ),
-                    ],
-                  ),
+                        // Day name
+                        SizedBox(
+                          
+                          width: 90, // Fixed width
+                          child: FutureBuilder<String>(
+                            future: () async {
+                              final date = WeekWeather?['data'][index]['datetime'];
+                              return getDayName(date);
+                            }(),
+                            builder: (context, snapshot) {
+                              if (snapshot.connectionState == ConnectionState.waiting) {
+                                return const Text("Loading...");
+                              } else if (snapshot.hasError) {
+                                return const Text("Error...");
+                              } else if (snapshot.hasData) {
+                                return Text(
+                                  snapshot.data!,
+                                  style: const TextStyle(
+                                    fontWeight: FontWeight.w400,
+                                    color: Colors.white,
+                                    fontSize: 15,
+                                  ),
+                                  textAlign: TextAlign.center,
+                                );
+                              } else {
+                                return const Text("wait...");
+                              }
+                            },
+                          ),
+                        ),
+                      ],
+                    ),
+
                 );
               }),
             ),
     );
+
+
+  }
+}
+
+
 
 /*
 
@@ -809,5 +823,3 @@ class WeekWeatherBlock extends StatelessWidget {
 
     
         */
-  }
-}

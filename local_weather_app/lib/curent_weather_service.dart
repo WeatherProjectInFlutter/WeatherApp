@@ -7,6 +7,7 @@ class WeatherService{
   //The URL we will get the data from  :
   
   final String ApiURL='https://api.openweathermap.org/data/2.5/weather';
+  
 
   //This method will take the city name to get the current weather :
 
