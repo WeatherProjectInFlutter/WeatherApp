@@ -31,12 +31,19 @@ String getWeatherImage(String condition){
       "Mist":"Materials/fog.png",
       "Smoke":"Materials/fog.png",
     };
-    return weatherImages[condition]?? "Materials/sunny.png"; //Materials/$weatherCondition.png"
+    DateTime now=DateTime.now();
+    String defultImage=(7<=now.hour&&now.hour<=19)?"Materials/sunny.png":"Materials/night-moon.png";
+
+    return weatherImages[condition]??defultImage; //Materials/$weatherCondition.png"
   }
 
   int getCurentTemp(double val) {
     return val.round();
   }
+  String getWeatherIconUrl(String iconCode) {
+      return 'https://openweathermap.org/img/wn/$iconCode@2x.png';
+    }
+    
     return Column(
       children: [
         Row(children: [
