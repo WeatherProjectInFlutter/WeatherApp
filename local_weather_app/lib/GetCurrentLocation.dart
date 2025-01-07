@@ -1,5 +1,8 @@
 
-import 'package:geolocator/geolocator.dart' show Geolocator, LocationAccuracy, LocationPermission, Position;
+import 'package:flutter/services.dart';
+import 'package:geolocator/geolocator.dart'
+    show Geolocator, LocationPermission, Position;
+
 
 Future<Position> getCurrentLocation() async {
   bool serviceEnabled;
@@ -15,8 +18,8 @@ Future<Position> getCurrentLocation() async {
   //If permission is denied, it requests permission using requestPermission
   if (permission == LocationPermission.denied) {
     permission = await Geolocator.requestPermission();
-  // If permission is still denied or denied permanently:
-  // Returns an error stating that permissions are denied or permanently denied.
+    // If permission is still denied or denied permanently:
+    // Returns an error stating that permissions are denied or permanently denied.
 
     if (permission == LocationPermission.denied) {
       return Future.error('Location permissions are denied');
@@ -28,8 +31,7 @@ Future<Position> getCurrentLocation() async {
 
   // Get the current location
   return await Geolocator.getCurrentPosition();
-
- 
 }
+
 
 
