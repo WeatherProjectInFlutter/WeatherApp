@@ -37,19 +37,18 @@ import 'WeatherProvider.dart';
               scrollDirection: Axis.horizontal, // Enables horizontal scrolling
               child: Row(
                 // Generate multiple weather columns dynamically
-                children: List.generate(24,(index) => Padding(   // Number of weather columns (10 in this example)
+                children: List.generate(24,(index) => Padding(   // Number of weather columns 
                     padding: const EdgeInsets.symmetric(horizontal: 10.0), // Space between columns
                     child: Column(
                       children: [
                         // Displays the hour dynamically based on the index
                         Text(
-                          "${hourlyWeather?['forecast']['forecastday'][0]['hour'][index]['time'].split(' ')[1]}", // Example: "5 pm", "6 pm", etc.
+                          "${hourlyWeather?['forecast']['forecastday'][0]['hour'][index]['time'].split(' ')[1]}", 
                           style: const TextStyle(color: Colors.white), // Light gray text
                         ),
                         const Padding(padding: EdgeInsets.fromLTRB(0, 15, 0, 0)),
+                      
                         // Displays an icon for the weather
-                        
-                          // Displays an icon for the weather with fallback logic*****************************************************
                         (hourlyWeather?['forecast']['forecastday'][0]['hour'][index]['condition']['icon'] ==
                                 "//cdn.weatherapi.com/weather/64x64/night/113.png")
                             ? Image.asset(
