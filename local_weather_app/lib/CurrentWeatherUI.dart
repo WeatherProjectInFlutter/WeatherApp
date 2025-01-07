@@ -60,14 +60,18 @@ String getWeatherImage(String condition){
                         fontSize: 140,
                       ),
                     ),
+            weatherProvider.isLoding?const Center(child: CircularProgressIndicator(),):
+
           Container(
             padding:
                 const EdgeInsets.only(left: 5), //هاي على التلفون بتخرب الصورة
             child: Image.asset(getWeatherImage('${Weatherdata?['weather'][0]['main']}'), width: 140, height: 140),
           ),
         ]),
+        weatherProvider.isLoding?const Center(child: CircularProgressIndicator(),):
         Row(
-          children: [
+          children:
+           [
             const Padding(padding: EdgeInsets.only(left: 50)),
             Text(
               '${Weatherdata?['weather'][0]['description']}',

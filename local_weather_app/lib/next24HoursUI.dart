@@ -27,7 +27,8 @@ import 'WeatherProvider.dart';
         color: const Color.fromARGB(124, 207, 216, 200),
         borderRadius: BorderRadius.circular(20),
       ),
-      child: Column(
+      child:weatherProvider.isLoding?const Center(child: CircularProgressIndicator(),):
+       Column(
         crossAxisAlignment: CrossAxisAlignment.start, // Aligns children to the start horizontally
         children: [
           // The scrollable weather forecast row
